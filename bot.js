@@ -5,7 +5,7 @@ var client = new discord.Client();
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
 client.on("ready", () => {
-    console.log("ready");
+    console.log("Bot ready and online (and updated as well)");
     client.user.setActivity ("Being a good bot");
 });
           
