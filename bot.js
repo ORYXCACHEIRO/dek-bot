@@ -9,7 +9,7 @@ client.on("ready", () => {
     client.user.setActivity ("Being a good bot");
 });
           
-client.on("message", async (message) => {
+client.on("message", (message) => {
 
     if(message.author.bot){
         return;
