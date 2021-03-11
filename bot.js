@@ -8,4 +8,17 @@ client.on("ready", () => {
     console.log("ready");
     client.user.setActivity ("Being a good bot");
 });
-               
+          
+client.on("message", async (message) => {
+
+    if(message.author.bot){
+        return;
+    } 
+
+    msg = message.content.toLowerCase();
+
+    if(message.content=="hello"){
+        message.reply("Aqui tens os comandos " + message.author.username);
+    }
+
+});
