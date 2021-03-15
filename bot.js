@@ -19,15 +19,17 @@ client.on("message", (message) => {
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
+    const channelsCreated = new discord.GuildChannelManager();
+
     if(message.content==prefix+"setupbot"){
-        if(channel_Id==""){
+        if(channelsCreated.guild.name!="lor-decks"){
             message.guild.channels.create("LOR DECKS").then(ch => {
                 channel_Id = ch.id;
             });
             message.reply("Bot is setup");
         }
        else {
-           message.reply("The bot was already setupsss");
+           message.reply("The bot was already setup");
        }
     }
 
