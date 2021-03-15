@@ -23,7 +23,7 @@ client.on("message", (message) => {
    
     if(message.author.bot) return; 
 
-    const prefix = "ld!"
+    const prefix = "ld!";
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
