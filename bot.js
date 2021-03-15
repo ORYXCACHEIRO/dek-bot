@@ -21,7 +21,7 @@ client.on("message", async (message) => {
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
-    const verificaCanal = guild.channels.cache.find(ch => { 
+    var verificaCanal = guild.channels.cache.find(ch => { 
         if(ch.name == nomeCanal){
             return true;
         } else {
