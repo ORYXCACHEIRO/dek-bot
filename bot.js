@@ -1,5 +1,7 @@
 const discord = require('discord.js');
 
+const DeckEncoder  = require('runeterra');
+
 var client = new discord.Client();
 
 var nomeCanal = "lor-decks";
@@ -27,7 +29,7 @@ client.on("message", (message) => {
 
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                message.reply("The bot was already setup " + message.guild.channels.cache.get(channel.id).toString());
+                message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
                 found = true;
             } else {
                 found = false;
@@ -41,6 +43,11 @@ client.on("message", (message) => {
             message.reply("Bot is setup");
         }
 
+    }
+
+    if(msg==prefix+"deck" && message.guild.channels==nomeCanal){
+        const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
+        message.reply(deck);
     }
 
     

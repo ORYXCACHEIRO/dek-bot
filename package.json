@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ORYXCACHEIRO/dekc-bot#readme",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "runeterra": "^3.0.0"
   }
 }
