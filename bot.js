@@ -21,24 +21,17 @@ client.on("message", (message) => {
     
     if(message.content==prefix+"setupbot"){
 
-        const verificaCanal = message.guild.channels.cache.find((channel) => { 
+        message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                verificaCanal = true;
+                message.reply("The bot was already setup" + channel.name);
             } else {
-                message.reply(channel.name);
-                verificaCanal = true;
+                message.guild.channels.create("lor decks").then(ch => {
+                    channel_Id = ch.id;
+                });
+                message.reply("Bot is setup");
             }
-        })
+        });
 
-        if(await verificaCanal!=true){
-            message.guild.channels.create("lor decks").then(ch => {
-                channel_Id = ch.id;
-            });
-            message.reply("Bot is setup");
-        }
-        else {
-            message.reply("The bot was already setup");
-        }
     }
 
     
