@@ -17,27 +17,32 @@ client.on("message", async (message) => {
 
     if(message.author.bot) return; 
 
-    const prefix = "ld!"
+    const prefix = "ld!";
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     var verificaCanal = guild.channels.cache.find(ch => { 
-        if(ch.name == nomeCanal){
+        if(ch.name === nomeCanal){
             return true;
         } else {
             message.reply(ch.name);
             return false;
         }
     });
+    
 
-    if(verificaCanal!=true){
-        message.guild.channels.create("LOR DECKS").then(ch => {
-            channel_Id = ch.id;
-        });
-        message.reply("Bot is setup");
+    if(message.content==prefix+"setupbot"){
+        if(verificaCanal!=true){
+            message.guild.channels.create("LOR DECKS").then(ch => {
+                channel_Id = ch.id;
+            });
+            message.reply("Bot is setup");
+        }
+        else {
+            message.reply("The bot was already setup");
+        }
     }
-    else {
-        message.reply("The bot was already setup");
-    }
+
+    
 
 });
