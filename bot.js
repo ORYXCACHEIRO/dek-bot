@@ -2,7 +2,7 @@ const discord = require('discord.js');
 
 var client = new discord.Client();
 
-var nomeCanal = "lordecks";
+var nomeCanal = "lor-decks";
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
@@ -18,20 +18,20 @@ client.on("message", (message) => {
     const prefix = "ld!";
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
-
-    const verificaCanal = message.guild.channels.cache.find((channel) => { 
-        if(channel.name === nomeCanal){
-            return true;
-        } else {
-            message.reply(channel.name);
-            return false;
-        }
-    });
     
-
     if(message.content==prefix+"setupbot"){
+
+        const verificaCanal = message.guild.channels.cache.find((channel) => { 
+            if(channel.name === nomeCanal){
+                verificaCanal = true;
+            } else {
+                message.reply(channel.name);
+                verificaCanal = true;
+            }
+        });
+
         if(verificaCanal!=true){
-            message.guild.channels.create("lordecks").then(ch => {
+            message.guild.channels.create("lor decks").then(ch => {
                 channel_Id = ch.id;
             });
             message.reply("Bot is setup");
