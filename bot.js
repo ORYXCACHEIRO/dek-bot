@@ -20,7 +20,7 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     if(message.content==prefix+"setupbot"){
-        if(channel_Id!=""){
+        if(channel_Id==""){
             message.guild.channels.create("LOR DECKS").then(ch => {
                 channel_Id = ch.id;
             });
