@@ -8,10 +8,8 @@ client.on("ready", () => {
     console.log("Bot ready and online (and updated as well)");
     client.user.setActivity ("Being a good bot");
 
-    if(client.channels.fetch("LOR Deck")!=true){
-        client.guild.createChannel("LOR DECKS").then(channel => {
-            channel.setTopic("This a teste");
-        });
+    if(client.channels.fetch("LOR DECKS")!=true){
+        console.log("noice");
     }
 });
           
