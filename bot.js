@@ -2,7 +2,7 @@ const discord = require('discord.js');
 
 var client = new discord.Client();
 
-var nomeCanal = 'lor-decks';
+var nomeCanal = "lor-decks";
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
@@ -22,7 +22,12 @@ client.on("message", async (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const verificaCanal = guild.channels.cache.find((channel) => { 
-        return channel.name === nomeCanal;
+        if(channel.name === nomeCanal){
+            return true;
+        } else {
+            message.reply(channel.name);
+            return false;
+        }
     });
     
 
