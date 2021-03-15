@@ -2,6 +2,8 @@ const discord = require('discord.js');
 
 var client = new discord.Client();
 
+var channel_Id = "";
+
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
 client.on("ready", () => {
@@ -10,8 +12,6 @@ client.on("ready", () => {
 });
           
 client.on("message", (message) => {
-
-    var channel_Id = "";
 
     if(message.author.bot) return; 
 
@@ -24,6 +24,7 @@ client.on("message", (message) => {
             message.guild.channels.create("LOR DECKS").then(ch => {
                 channel_Id = ch.id;
             });
+            message.reply("Bot is setup");
         }
        else {
            message.reply("The bot was already setup");
