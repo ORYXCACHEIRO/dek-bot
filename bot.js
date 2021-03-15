@@ -21,7 +21,7 @@ client.on("message", (message) => {
        });
     }
     if(message.content=="id"){
-        message.require(channel_Id);
+        message.reply(channel_Id);
     } 
 
 });
