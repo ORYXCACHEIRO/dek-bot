@@ -4,7 +4,6 @@ var client = new discord.Client();
 
 var channel_Id = "";
 
-var Channels = new discord.CategoryChannel();
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
