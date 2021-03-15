@@ -6,7 +6,7 @@ var channel_Id = "";
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
-var c = new discord.Guild();
+var c = new discord.GuildChannelManager();
 
 //const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
@@ -29,7 +29,7 @@ client.on("message", (message) => {
     if(message.author.bot) return; 
 
     const prefix = "ld!";
-    
+
     if(message.content==prefix+"setupbot"){
         
     }
