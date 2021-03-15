@@ -25,7 +25,7 @@ client.on("message", async (message) => {
         if(ch.name == nomeCanal){
             return true;
         } else {
-            message.reply("aaaaaaa");
+            message.reply(ch.name);
             return false;
         }
     });
