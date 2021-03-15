@@ -18,15 +18,16 @@ client.on("message", (message) => {
     const prefix = "ld!";
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
+
+    const msg = message.content.toLowerCase();
     
-    if(message.content==prefix+"setupbot"){
+    if(msg==prefix+"setupbot"){
 
         var found = false;
 
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                message.reply("The bot was already setup.");
-                message.mentions(channel.name)
+                message.reply("The bot was already setup " + message.guild.channels.cache.get(channel.id).toString());
                 found = true;
             } else {
                 found = false;
