@@ -2,7 +2,7 @@ const discord = require('discord.js');
 
 var client = new discord.Client();
 
-var channel_Id = "";
+var nomeCanal = "lor-decks";
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
@@ -11,7 +11,9 @@ client.on("ready", () => {
     client.user.setActivity ("Being a good bot");                                                                                                                                                                                                                                                                                                                                                         
 });
           
-client.on("message", (message) => {
+client.on("message", async (message) => {
+
+    const {member, content, guild, channel} = me
 
     if(message.author.bot) return; 
 
@@ -19,18 +21,22 @@ client.on("message", (message) => {
 
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
-    const channelsCreated = new discord.GuildChannelManager();
-
-    if(message.content==prefix+"setupbot"){
-        if(channelsCreated.guild.name!="lor-decks"){
-            message.guild.channels.create("LOR DECKS").then(ch => {
-                channel_Id = ch.id;
-            });
-            message.reply("Bot is setup");
+    const verificaCanal = message.guild.channels.cache.find(ch => { 
+        if(ch.name === nomeCanal){
+            return true;
+        } else {
+            return false;
         }
-       else {
-           message.reply("The bot was already setup");
-       }
+    });
+
+    if(verificaCanal!=true){
+        message.guild.channels.create("LOR DECKS").then(ch => {
+            channel_Id = ch.id;
+        });
+        message.reply("Bot is setup");
+    }
+    else {
+        message.reply("The bot was already setup");
     }
 
 });
