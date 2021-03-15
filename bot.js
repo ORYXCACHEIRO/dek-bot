@@ -13,7 +13,7 @@ client.on("ready", () => {
           
 client.on("message", async (message) => {
 
-    const {member, content, guild, channel} = me
+    const {member, content, guild, channel} = message;
 
     if(message.author.bot) return; 
 
