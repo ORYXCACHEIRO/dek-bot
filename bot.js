@@ -15,10 +15,13 @@ client.on("message", (message) => {
 
     if(message.author.bot) return; 
 
-    if(message.content=="Setup Bot"){
+    if(message.content=="setupbot"){
        message.guild.channels.create("LOR DECKS").then(ch => {
            channel_Id = ch.id; 
        });
-    }   
+    }
+    if(message.content=="id"){
+        message.require(channel_Id);
+    } 
 
 });
