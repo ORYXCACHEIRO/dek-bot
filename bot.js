@@ -27,7 +27,7 @@ client.on("message", (message) => {
             message.reply("Bot is setup");
         }
        else {
-           message.reply("The bot was already setup");
+           message.reply("The bot was already setupsss");
        }
     }
 
