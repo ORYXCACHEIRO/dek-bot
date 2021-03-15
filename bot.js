@@ -8,7 +8,11 @@ client.on("ready", () => {
     console.log("Bot ready and online (and updated as well)");
     client.user.setActivity ("Being a good bot");
 
-    discord.Guild.create('LOR Deck BOT', { reason: 'Needed a cool new channel' }).then(console.log).catch(console.error);
+    if(client.channels.fetch("LOR Deck")!=true){
+        client.guild.createChannel("LOR DECKS").then(channel => {
+            channel.setTopic("This a teste");
+        });
+    }
 });
           
 client.on("message", (message) => {
