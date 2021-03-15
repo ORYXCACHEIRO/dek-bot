@@ -6,8 +6,6 @@ var channel_Id = "";
 
 var Channels = new discord.CategoryChannel();
 
-var coisa = new discord.
-
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
 client.on("ready", () => {
