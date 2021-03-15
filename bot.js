@@ -12,11 +12,7 @@ client.on("ready", () => {
     console.log("Bot ready and online (and updated as well)");
     client.user.setActivity ("Being a good bot");           
     
-    if(channel_Id==""){
-        Channels.guild.channels.create("LOR DECKS").then(ch => {
-            channel_Id = ch.id;
-        });
-    }
+    
 });
           
 client.on("message", (message) => {
