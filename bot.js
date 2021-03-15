@@ -28,9 +28,9 @@ client.on("message", (message) => {
                 message.reply(channel.name);
                 verificaCanal = true;
             }
-        });
+        })
 
-        if(verificaCanal!=true){
+        if(await verificaCanal!=true){
             message.guild.channels.create("lor decks").then(ch => {
                 channel_Id = ch.id;
             });
