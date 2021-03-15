@@ -29,6 +29,7 @@ client.on("message", (message) => {
                     channel_Id = ch.id;
                 });
                 message.reply("Bot is setup");
+                break;
             }
         });
 
