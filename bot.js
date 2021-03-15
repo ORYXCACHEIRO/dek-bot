@@ -25,7 +25,7 @@ client.on("message", (message) => {
 
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                message.reply("The bot was already setup " + channel.name);
+                message.reply("The bot was already setup #" + channel.name);
                 found = true;
             } else {
                 found = false;
