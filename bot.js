@@ -6,8 +6,6 @@ var channel_Id = "";
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
-var createChannels = new discord.CategoryChannel();
-
 const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
 client.on("ready", () => {
@@ -15,7 +13,7 @@ client.on("ready", () => {
     client.user.setActivity ("Being a good bot"); 
 
     if(channel_Id==""){
-        createChannels.guild.channels.create("LOR DECKS").then(ch => {
+        new discord.CategoryChannel().guild.channels.create("LOR DECKS").then(ch => {
             channel_Id = ch.id;
         });
     }
