@@ -65,9 +65,9 @@ client.on("message", (message) => {
             message.reply(deck);
         } else {
             if(lorDeckChannelId!=0){
-                message.reply("To execute this command you need to be on " + lorDeckChannelId());
+                message.reply("To execute this command you need to be on " + message.guild.channels.cache.get(lorDeckChannelId()).toString());
             } else {
-                message.reply("To execute this command you need to be on the right channel" + lorDeckChannelId());
+                message.reply("To execute this command you need to be on the right channel");
             }
         }  
     }
