@@ -1,10 +1,10 @@
 const discord = require('discord.js');
 
-const { DeckEncoder } = require('runeterra')
-
-var client = new discord.Client();
+const { DeckEncoder } = require('runeterra');
 
 const mysql = require("mysql");
+
+var client = new discord.Client();
 
 var con = mysql.createConnection({
     host: "sql11.freesqldatabase.com",
