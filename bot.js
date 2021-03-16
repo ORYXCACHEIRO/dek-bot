@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 
-const DeckEncoder  = require('runeterra');
+const { DeckEncoder } = require('runeterra')
 
 var client = new discord.Client();
 
@@ -49,6 +49,7 @@ client.on("message", (message) => {
 
     else if(msg==prefix+"deck" && channelId!=0){
         const deck = DeckEncoder.decode('CMCACAYFAQBAEBIBAYBAIBYDDIDACBILCQKROIRKAIAQCBIHAICAOOJ3AEAQCBID');
+        console.log(deck);
         message.reply(deck);
     }
     
