@@ -4,7 +4,19 @@ const { DeckEncoder } = require('runeterra')
 
 var client = new discord.Client();
 
-var nomeCanal = "lor-decks";
+const mysql = require("mysql");
+
+var con = mysql.createConnection({
+    host: "sql11.freesqldatabase.com",
+    user: "sql11399230",
+    password: "Qz2uiayKDC",
+    database: "sql11399230"
+});
+
+con.connect(err =>{
+    if(err) throw err;
+    console.log("Connected to DB");
+});
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
@@ -16,6 +28,8 @@ client.on("ready", () => {
 client.on("message", (message) => {
 
     if(message.author.bot) return; 
+
+    var nomeCanal = "lor-decks";
 
     const prefix = "ld!";
 
