@@ -48,7 +48,7 @@ client.on("message", (message) => {
     }
 
     else if(msg==prefix+"deck" && channelId!=0){
-        const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
+        const deck = DeckEncoder.decode('CMCACAYFAQBAEBIBAYBAIBYDDIDACBILCQKROIRKAIAQCBIHAICAOOJ3AEAQCBID');
         message.reply(deck);
     }
     
