@@ -76,9 +76,21 @@ client.on("message", (message) => {
             message.reply(deck);
         } else {
             if(lorDeckChannelId!=0){
-                message.reply("To execute this command you need to be on " + message.guild.channels.cache.get(lorDeckChannelId()).toString());
+                message.channel.send(
+                    embeded.setTitle("Bot Setup")
+                    .setDescription("The bot was succefully setup " + message.guild.channels.cache.get(lorDeckChannelId()).toString())
+                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                    .setFooter("If you neeed help use ld!help for more commands")
+                    .setTimestamp()
+                );
             } else {
-                message.reply("To execute you need to setup the bot first");
+                message.channel.send(
+                    embeded.setTitle("Error")
+                    .setDescription("To use the bot you need to set it up")
+                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                    .setFooter("If you neeed help use ld!help for more commands")
+                    .setTimestamp()
+                );
             }
         }  
     }
