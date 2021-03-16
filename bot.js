@@ -22,10 +22,12 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const msg = message.content.toLowerCase();
+
+    var encontrou = encontrarCanal();
     
     if(msg==prefix+"setupbot"){      
 
-        if(encontrarCanal()!=true){
+        if(encontrou!=true){
             message.guild.channels.create("lor decks").then(ch => {
                 channel_Id = ch.id;
             });
@@ -34,7 +36,7 @@ client.on("message", (message) => {
 
     }
 
-    else if(msg==prefix+"deck" && message.guild.channels.cache.get(detalhesCanal.id)){
+    else if(msg==prefix+"deck" && message.guild.channels.cache.get(canalId)){
         const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
         message.reply(deck);
     }
@@ -48,10 +50,10 @@ client.on("message", (message) => {
         });
     }
 
-    function detalhesCanal(){
-        var canal = message.guild.channels.cache.find((channel) => { 
+    function canalId(){
+        message.guild.channels.cache.find((channel) => { 
             if(channel.name===nomeCanal){
-                return canal;
+                return channel.id;
             }
         });
     }
