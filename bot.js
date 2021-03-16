@@ -47,7 +47,7 @@ client.on("message", (message) => {
 
     }
 
-    else if(msg==prefix+"deck" && message.guild.channels.cache.get(channelId)==true){
+    else if(msg==prefix+"deck" && channelId!=0){
         const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
         message.reply(deck);
     }
