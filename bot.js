@@ -65,7 +65,7 @@ client.on("message", (message) => {
             message.reply(deck);
         } else {
             if(lorDeckChannelId!=0){
-                message.reply("Please do this on the channel " + message.guild.channels.cache.get(lorDeckChannelId).toString());
+                message.reply("Please do this on the channel " + message.guild.channels.cache.get(lorDeckChannelId()).toString());
             }
             else {
                 message.reply("To execute this command you need to setup the bot first");
