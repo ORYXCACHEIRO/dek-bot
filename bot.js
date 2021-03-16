@@ -22,12 +22,10 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const msg = message.content.toLowerCase();
-
-    var encontrou = encontrarCanal();
     
     if(msg==prefix+"setupbot"){      
 
-        if(encontrou!=true){
+        if(encontrarCanal!=true){
             message.guild.channels.create("lor decks").then(ch => {
                 channel_Id = ch.id;
             });
