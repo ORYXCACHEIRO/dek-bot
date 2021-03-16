@@ -22,6 +22,8 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const msg = message.content.toLowerCase();
+
+    const channelId = getChannelId();
     
     if(msg==prefix+"setupbot"){
 
@@ -45,12 +47,12 @@ client.on("message", (message) => {
 
     }
 
-    else if(msg==prefix+"deck" && message.guild.channels.cache.get(canalId)){
+    else if(msg==prefix+"deck" && message.guild.channels.cache.get(channelId)==true){
         const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
         message.reply(deck);
     }
     
-    function canalId(){
+    function getChannelId(){
         message.guild.channels.cache.find((channel) => { 
             if(channel.name===nomeCanal){
                 return channel.id;
