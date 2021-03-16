@@ -46,7 +46,7 @@ client.on("message", (message) => {
                 message.channel.send(
                 embeded.setTitle("Error")
                 .setDescription("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString())
-                .setThumbnail("lor_icon.png")
+                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                 .setFooter("If you neeed help use ld!help for more commands")
                 .setTimestamp()
                 );
