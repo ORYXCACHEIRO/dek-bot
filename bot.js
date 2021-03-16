@@ -57,14 +57,15 @@ client.on("message", (message) => {
         });
 
         if(found!=true){
-            message.guild.channels.create("lor decks");
-            message.channel.send(
-                embeded.setTitle("Bot Setup")
-                .setDescription("The bot was succefully setup " + message.guild.channels.cache.get(lorDeckChannelId()).toString())
-                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                .setFooter("If you neeed help use ld!help for more commands")
-                .setTimestamp()
-            );
+            message.guild.channels.create("lor decks").then(
+                message.channel.send(
+                    embeded.setTitle("Bot Setup")
+                    .setDescription("The bot was succefully setup " + message.guild.channels.cache.get(lorDeckChannelId()).toString())
+                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                    .setFooter("If you neeed help use ld!help for more commands")
+                    .setTimestamp()
+                )
+            );  
         }
 
     }
