@@ -64,13 +64,7 @@ client.on("message", (message) => {
             const deck = DeckEncoder.decode('CMCACAYFAQBAEBIBAYBAIBYDDIDACBILCQKROIRKAIAQCBIHAICAOOJ3AEAQCBID');
             message.reply(deck);
         } else {
-            if(lorDeckChannelId!=0){
-                message.reply("Please do this on the channel " + message.guild.channels.cache.get(lorDeckChannelId()).toString());
-            }
-            else {
-                message.reply("To execute this command you need to setup the bot first");
-            }
-            
+            message.reply("To execute this command you need to be on the right channel");
         }
         
     }
