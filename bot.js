@@ -23,20 +23,9 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
     
-    if(msg==prefix+"setupbot"){
+    if(msg==prefix+"setupbot"){      
 
-        var found = false;
-
-        message.guild.channels.cache.find((channel) => { 
-            if(channel.name === nomeCanal){
-                message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
-                found = true;
-            } else {
-                found = false;
-            }
-        });
-
-        if(found!=true){
+        if(encontrarCanal()!=true){
             message.guild.channels.create("lor decks").then(ch => {
                 channel_Id = ch.id;
             });
@@ -45,9 +34,28 @@ client.on("message", (message) => {
 
     }
 
-    if(msg==prefix+"deck" && message.guild.channels==nomeCanal){
+    else if(msg==prefix+"deck" && message.guild.channels.cache.get(detalhesCanal.id)){
         const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
         message.reply(deck);
+    }
+
+    function encontrarCanal(){
+        message.guild.channels.cache.find((channel) => { 
+            if(channel.name === nomeCanal){
+                message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+
+    function detalhesCanal(){
+        var canal = message.guild.channels.cache.find((channel) => { 
+            if(channel.name===nomeCanal){
+                return canal;
+            }
+        });
     }
 
     
