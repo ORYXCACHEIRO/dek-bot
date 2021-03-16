@@ -76,10 +76,10 @@ client.on("message", (message) => {
         let idd = 0; 
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                idd = channel.id;
-                return idd;
+                idd = channel.id;    
             }
         });
+        return idd;
     }
 
 });
