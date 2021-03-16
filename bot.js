@@ -64,9 +64,12 @@ client.on("message", (message) => {
             const deck = DeckEncoder.decode('CMCACAYFAQBAEBIBAYBAIBYDDIDACBILCQKROIRKAIAQCBIHAICAOOJ3AEAQCBID');
             message.reply(deck);
         } else {
-            message.reply("To execute this command you need to be on the right channel");
-        }
-        
+            if(lorDeckChannelId!=0){
+                message.reply("To execute this command you need to be on " + message.guild.channels.cache.get(lorDeckChannelId().toString()).toString());
+            } else {
+                message.reply("To execute this command you need to be on the right channel" + lorDeckChannelId());
+            }
+        }  
     }
 
     function lorDeckChannelId(){
