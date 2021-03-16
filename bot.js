@@ -23,9 +23,20 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
     
-    if(msg==prefix+"setupbot"){      
+    if(msg==prefix+"setupbot"){
 
-        if(encontrarCanal!=true){
+        var found = false;
+
+        message.guild.channels.cache.find((channel) => { 
+            if(channel.name === nomeCanal){
+                message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
+                found = true;
+            } else {
+                found = false;
+            }
+        });
+
+        if(found!=true){
             message.guild.channels.create("lor decks").then(ch => {
                 channel_Id = ch.id;
             });
@@ -38,18 +49,7 @@ client.on("message", (message) => {
         const deck = DeckEncoder.decode('CEAAECABAQJRWHBIFU2DOOYIAEBAMCIMCINCILJZAICACBANE4VCYBABAILR2HRL');
         message.reply(deck);
     }
-
-    function encontrarCanal(){
-        message.guild.channels.cache.find((channel) => { 
-            if(channel.name === nomeCanal){
-                message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
-                return true;
-            } else {
-                return null;
-            }
-        });
-    }
-
+    
     function canalId(){
         message.guild.channels.cache.find((channel) => { 
             if(channel.name===nomeCanal){
