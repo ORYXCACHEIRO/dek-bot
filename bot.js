@@ -43,7 +43,13 @@ client.on("message", (message) => {
 
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
+                message.channel.send(
+                embeded.setTitle("Error")
+                .setDescription("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString())
+                .setThumbnail("lor_icon.png")
+                .setFooter("If you neeed help use ld!help for more commands")
+                .setTimestamp()
+                );
                 found = true;
             } else {
                 found = false;
