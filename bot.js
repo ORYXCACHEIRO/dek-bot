@@ -67,7 +67,7 @@ client.on("message", (message) => {
             if(lorDeckChannelId!=0){
                 message.reply("To execute this command you need to be on " + message.guild.channels.cache.get(lorDeckChannelId()).toString());
             } else {
-                message.reply("To execute this command you need to be on the right channel");
+                message.reply("To execute you need to setup the bot first");
             }
         }  
     }
