@@ -43,9 +43,9 @@ client.on("message", (message) => {
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
                 message.reply("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString());
-                return true;
-            } else {
                 return false;
+            } else {
+                return true;
             }
         });
     }
