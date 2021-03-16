@@ -60,7 +60,7 @@ client.on("message", (message) => {
     }
 
     else if(msg==prefix+"deck"){
-        if(message.channel==nomeCanal){
+        if(message.channel.name==nomeCanal){
             const deck = DeckEncoder.decode('CMCACAYFAQBAEBIBAYBAIBYDDIDACBILCQKROIRKAIAQCBIHAICAOOJ3AEAQCBID');
             message.reply(deck);
         } else {
