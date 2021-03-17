@@ -107,6 +107,8 @@ client.on("message", (message) => {
             var set3Length = client.set3.length;
             var set4Length = client.set4.length;
 
+            printDeck.push("CARTA | Nº DE CARTAS")
+
             for(let i = 0;i<deck.length;i++){
                 
                 switch(deck[i].set){
@@ -114,7 +116,7 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.name + " | Nº " + deck[i].count;
+                                let info = result.name + "  " + deck[i].count;
                                 printDeck.push(info);
                                 break;
                             }
