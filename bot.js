@@ -88,26 +88,42 @@ client.on("message", (message) => {
             var printDeck = new Array;
 
             for(let i = 0;i<deck.length-1;i++){
-                for(let j = 0; j<client.set1.length;j++){
-                    if(client.set1[j]["cardCode"]==deck[i].code){
-                        console.log(client.set1[i]["name"]);
-                }
-                }
                 switch(deck[i].set){
-                    case 55:
-                        
+                    case 1:
+                    for(let j = 0; j<client.set1.length;j++){
+                        if(client.set1[j]["cardCode"]==deck[i].code){
+                            console.log(client.set1[j]["name"]);
+                            cardNames.push(client.set1[j]["name"]);
+                            cardCount.push(deck[i].count);
+                        }
+                    }
                     break;
                     case 2:
-                        cardNames.push(client.set2["name"]);
-                        cardCount.push(deck[i].count);
+                        for(let j = 0; j<client.set2.length;j++){
+                            if(client.set2[j]["cardCode"]==deck[i].code){
+                                console.log(client.set2[j]["name"]);
+                                cardNames.push(client.set2[j]["name"]);
+                                cardCount.push(deck[i].count);
+                            }
+                        }
                     break;
                     case 3:
-                        cardNames.push(client.set3["name"]);
-                        cardCount.push(deck[i].count);
+                        for(let j = 0; j<client.set3.length;j++){
+                            if(client.set3[j]["cardCode"]==deck[i].code){
+                                console.log(client.set3[j]["name"]);
+                                cardNames.push(client.set3[j]["name"]);
+                                cardCount.push(deck[i].count);
+                            }
+                        }
                     break;
                     case 4:
-                        cardNames.push(client.set4["name"]);
-                        cardCount.push(deck[i].count);
+                        for(let j = 0; j<client.set4.length;j++){
+                            if(client.set4[j]["cardCode"]==deck[i].code){
+                                console.log(client.set4[j]["name"]);
+                                cardNames.push(client.set4[j]["name"]);
+                                cardCount.push(deck[i].count);
+                            }
+                        }
                     break;
                     default: break;
                 }
