@@ -115,7 +115,11 @@ client.on("message", (message) => {
                     printDeck.push(info);
                 }
             }
-            
+
+
+            console.log(cardNames);
+            console.log(cardCount);
+            console.log(printDeck);
             console.log(deck);
             message.channel.send(
                 embeded.setTitle("Deck")
