@@ -49,8 +49,15 @@ client.on("message", (message) => {
 
     if(msg.startsWith(prefix+"teste")){
         var result = client.set1.filter( obj => obj.region === 'Shadow Isles' && obj.cardCode=="01SI042")[0];
-        console.log(result.name);
-        
+        console.log(result.name);   
+    }
+
+    
+
+    if(msg.startsWith(prefix+"teste2")){
+        for(let z = 0;z<client.globals["regions"].length;z++){
+            console.log(client.globals["regions"][z]["name"]);
+        }
     }
     
     if(msg.startsWith(prefix+"setupbot")){
@@ -103,13 +110,11 @@ client.on("message", (message) => {
                 
                 switch(deck[i].set){
                     case 1:
-                    client.set1.find(obj => {
-                        if(obj.cardCode==deck[i].code){
-                            console.log(obj.name);
-                            cardNames.push(obj.name);
-                            cardCount.push(deck[i].count);
+                        for(let z = 0;z<client.globals["regions"].length;z++){
+
                         }
-                    });
+                        var result = client.set1.filter( obj => obj.region === 'Shadow Isles' && obj.cardCode=="01SI042")[0];
+                        console.log(result.name);
                     break;
                     case 2:
                         client.set2.find(obj => {
