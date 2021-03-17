@@ -46,18 +46,6 @@ client.on("message", (message) => {
     const msg = message.content.toLowerCase();
 
     var region22 = client.globals["regions"][0].name;
-
-    if(msg.startsWith(prefix+"teste")){
-        var  count = 0;
-        for(let i = 0; i<client.set1["region"].length;i++){
-
-            if(client.set1[i]["region"]==region22){
-                count++;
-            }
-            
-        }
-        console.log(count);
-    }
     
     if(msg.startsWith(prefix+"setupbot")){
 
@@ -100,7 +88,12 @@ client.on("message", (message) => {
 
             var printDeck = new Array;
 
-            for(let i = 0;i<deck.length-1;i++){
+            var set1Length = client.set1.length;
+            var set2Length = client.set2.length;
+            var set3Length = client.set3.length;
+            var set4Length = client.set4.length;
+
+            for(let i = 0;i<deck.length;i++){
 
                 let regionShorCut = deck[i].faction.shortCode;
                 let region = client.globals["regions"].abbreviation;
@@ -108,7 +101,7 @@ client.on("message", (message) => {
                 switch(deck[i].set){
                     case 1:
                     
-                    for(let j = 0; j<client.set1.length;j++){
+                    for(let j = 0; j<set1Length;j++){
                         if(client.set1[j]["cardCode"]==deck[i].code){
                             cardNames.push(client.set1[j]["name"]);
                             cardCount.push(deck[i].count);
@@ -116,7 +109,7 @@ client.on("message", (message) => {
                     }
                     break;
                     case 2:
-                        for(let j = 0; j<client.set2.length;j++){
+                        for(let j = 0; j<set2Length;j++){
                             if(client.set2[j]["cardCode"]==deck[i].code){
                                 cardNames.push(client.set2[j]["name"]);
                                 cardCount.push(deck[i].count);
@@ -124,7 +117,7 @@ client.on("message", (message) => {
                         }
                     break;
                     case 3:
-                        for(let j = 0; j<client.set3.length;j++){
+                        for(let j = 0; j<set3Length;j++){
                             if(client.set3[j]["cardCode"]==deck[i].code){
                                 cardNames.push(client.set3[j]["name"]);
                                 cardCount.push(deck[i].count);
@@ -132,7 +125,7 @@ client.on("message", (message) => {
                         }
                     break;
                     case 4:
-                        for(let j = 0; j<client.set4.length;j++){
+                        for(let j = 0; j<set4Length;j++){
                             if(client.set4[j]["cardCode"]==deck[i].code){
                                 cardNames.push(client.set4[j]["name"]);
                                 cardCount.push(deck[i].count);
