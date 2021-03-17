@@ -45,7 +45,7 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
 
-    var region22 = client.globals["regions"].name;
+    var region22 = client.globals["regions"][0].name;
 
     if(msg.startsWith(prefix+"teste")){
         var  count = 0;
