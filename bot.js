@@ -88,21 +88,23 @@ client.on("message", (message) => {
             var printDeck = new Array;
 
             for(let i = 0;i<deck.length-1;i++){
+                console.log(deck[i].code);
+                console.log(deck[i].code.valueOf());
                 switch(deck[i].code.valueOf()){
-                    case client.set1["cardCode"]:
-                        cardNames.push(client.set1["name"]);
+                    case client.set1.cardCode:
+                        cardNames.push(client.set1.name);
                         cardCount.push(deck[i].count);
                     break;
-                    case client.set2["cardCode"]:
-                        cardNames.push(client.set2["name"]);
+                    case client.set2.cardCode:
+                        cardNames.push(client.set2.name);
                         cardCount.push(deck[i].count);
                     break;
-                    case client.set3["cardCode"]:
-                        cardNames.push(client.set3["name"]);
+                    case client.set3.cardCode:
+                        cardNames.push(client.set3.name);
                         cardCount.push(deck[i].count);
                     break;
-                    case client.set4["cardCode"]:
-                        cardNames.push(client.set4["name"]);
+                    case client.set4.cardCode:
+                        cardNames.push(client.set4.name);
                         cardCount.push(deck[i].count);
                     break;
                     default: break;
