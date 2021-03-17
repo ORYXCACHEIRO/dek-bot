@@ -114,9 +114,8 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                console.log(result.name); 
-                                cardNames.push(result.name);
-                                cardCount.push(deck[i].count);
+                                let info = result.name + " | Nº " + deck[i].count;
+                                printDeck.push(info);
                                 break;
                             }
                         }
@@ -125,9 +124,8 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                console.log(result.name); 
-                                cardNames.push(result.name);
-                                cardCount.push(deck[i].count);
+                                let info = result.name + " | Nº " + deck[i].count;
+                                printDeck.push(info);
                                 break;
                             }
                         }
@@ -136,9 +134,8 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                console.log(result.name); 
-                                cardNames.push(result.name);
-                                cardCount.push(deck[i].count);
+                                let info = result.name + " | Nº " + deck[i].count;
+                                printDeck.push(info);
                                 break;
                             }
                         }
@@ -147,9 +144,8 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                console.log(result.name); 
-                                cardNames.push(result.name);
-                                cardCount.push(deck[i].count);
+                                let info = result.name + " | Nº " + deck[i].count;
+                                printDeck.push(info);
                                 break;
                             }
                         }
@@ -158,18 +154,6 @@ client.on("message", (message) => {
                 }
             }
 
-            for(let i = 0; i<cardNames.length; i++){
-                for(let j = 0; i<cardCount.length; j++){
-                    var info = cardNames[i] + " | Nº " + cardCount[j];
-                    printDeck.push(info);
-                }
-            }
-
-
-            console.log(cardNames);
-            console.log(cardCount);
-            console.log(printDeck);
-            console.log(deck);
             message.channel.send(
                 embeded.setTitle("Deck")
                 .setDescription(printDeck)
