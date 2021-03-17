@@ -2,9 +2,16 @@ const discord = require('discord.js');
 
 const { DeckEncoder } = require('runeterra');
 
+const fs = require('fs');
+
 const mysql = require("mysql");
 
 var client = new discord.Client();
+
+client.set1 = require("./cardsets/set1_data/set1.json");
+client.set2 = require("./cardsets/set2_data/set2.json");
+client.set3 = require("./cardsets/set3_data/set3.json");
+client.set4 = require("./cardsets/set4_data/set4.json");
 
 var con = mysql.createConnection({
     host: "sql11.freesqldatabase.com",
@@ -73,6 +80,7 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
             const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+            console.log(deck);
             message.reply(deck);
         } else {
             if(lorDeckChannelId!=0){
