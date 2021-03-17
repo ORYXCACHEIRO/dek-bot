@@ -103,43 +103,43 @@ client.on("message", (message) => {
             var set4Length = client.set4.length;
 
             for(let i = 0;i<deck.length;i++){
-
-                let regionShorCut = deck[i].faction.shortCode;
-                let region = client.globals["regions"].abbreviation;
                 
                 switch(deck[i].set){
                     case 1:
-                    
-                    for(let j = 0; j<set1Length;j++){
-                        if(client.set1[j]["cardCode"]==deck[i].code){
-                            cardNames.push(client.set1[j]["name"]);
+                    client.set1.find(obj => {
+                        if(obj.cardCode==deck[i].code){
+                            console.log(obj.name);
+                            cardNames.push(obj.name);
                             cardCount.push(deck[i].count);
                         }
-                    }
+                    });
                     break;
                     case 2:
-                        for(let j = 0; j<set2Length;j++){
-                            if(client.set2[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set2[j]["name"]);
+                        client.set2.find(obj => {
+                            if(obj.cardCode==deck[i].code){
+                                console.log(obj.name);
+                                cardNames.push(obj.name);
                                 cardCount.push(deck[i].count);
                             }
-                        }
+                        });
                     break;
                     case 3:
-                        for(let j = 0; j<set3Length;j++){
-                            if(client.set3[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set3[j]["name"]);
+                        client.set3.find(obj => {
+                            if(obj.cardCode==deck[i].code){
+                                console.log(obj.name);
+                                cardNames.push(obj.name);
                                 cardCount.push(deck[i].count);
                             }
-                        }
+                        });
                     break;
                     case 4:
-                        for(let j = 0; j<set4Length;j++){
-                            if(client.set4[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set4[j]["name"]);
+                        client.set4.find(obj => {
+                            if(obj.cardCode==deck[i].code){
+                                console.log(obj.name);
+                                cardNames.push(obj.name);
                                 cardCount.push(deck[i].count);
                             }
-                        }
+                        });
                     break;
                     default: break;
                 }
