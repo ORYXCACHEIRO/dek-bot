@@ -95,19 +95,10 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
             const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
-            
-            var cardNames = new Array;
-
-            var cardCount = new Array;
 
             var printDeck = new Array;
 
-            var set1Length = client.set1.length;
-            var set2Length = client.set2.length;
-            var set3Length = client.set3.length;
-            var set4Length = client.set4.length;
-
-            printDeck.push("CARTA | Nº DE CARTAS")
+            printDeck.push("CARTA | Nº DE CARTAS");
 
             for(let i = 0;i<deck.length;i++){
                 
