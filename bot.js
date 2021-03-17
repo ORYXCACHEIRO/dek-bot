@@ -160,7 +160,7 @@ client.on("message", (message) => {
 
             for(let i = 0; i<cardNames.length; i++){
                 for(let j = 0; i<cardCount.length; j++){
-                    info = cardNames[i] + " | Nº " + cardCount[j];
+                    var info = cardNames[i] + " | Nº " + cardCount[j];
                     printDeck.push(info);
                 }
             }
