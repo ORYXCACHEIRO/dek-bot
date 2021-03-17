@@ -147,6 +147,7 @@ client.on("message", (message) => {
 
         } else {
             if(lorDeckChannelId!=0){
+                message.send(client.set1.length);
                 message.channel.send(
                     embeded.setTitle("Error")
                     .setDescription("To use this command you need to be in the " + message.guild.channels.cache.get(lorDeckChannelId()).toString() + " channel")
