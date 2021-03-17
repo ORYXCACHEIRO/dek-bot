@@ -166,8 +166,17 @@ client.on("message", (message) => {
             }
 
 
+            console.log(cardNames);
+            console.log(cardCount);
             console.log(printDeck);
-
+            console.log(deck);
+            message.channel.send(
+                embeded.setTitle("Deck")
+                .setDescription(printDeck)
+                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                .setFooter("If you neeed help use ld!help for more commands")
+                .setTimestamp()
+            );
 
         } else {
             if(lorDeckChannelId!=0){
