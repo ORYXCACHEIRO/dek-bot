@@ -50,7 +50,7 @@ client.on("message", (message) => {
     if(msg.startsWith(prefix+"teste")){
         var result = client.set1.find(obj => {
             if(obj.cardCode=="01IO015"){
-                return obj[0].name;
+                return obj;
             }
         });
         console.log(result);
