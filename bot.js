@@ -88,10 +88,10 @@ client.on("message", (message) => {
             var printDeck = new Array;
 
             for(let i = 0;i<deck.length-1;i++){
-                for(let i = 0; i<client.set1.length;i++){
-                    if(client.set1[i]["cardCode"]==deck[i].code){
+                for(let j = 0; j<client.set1.length;j++){
+                    if(client.set1[j]["cardCode"]==deck[i].code){
                         console.log(client.set1[i]["name"]);
-                    }
+                }
                 }
                 switch(deck[i].set){
                     case 55:
