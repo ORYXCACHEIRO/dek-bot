@@ -45,6 +45,9 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
 
+    var region22 = client.globals["regions"].abbreviation;
+
+    message.channel.send(region22);
     
     if(msg.startsWith(prefix+"setupbot")){
 
@@ -90,7 +93,7 @@ client.on("message", (message) => {
             for(let i = 0;i<deck.length-1;i++){
 
                 let regionShorCut = deck[i].faction.shortCode;
-                let region = client.globals["regions"].length;
+                let region = client.globals["regions"].abbreviation;
                 
                 switch(deck[i].set){
                     case 1:
