@@ -12,6 +12,7 @@ client.set1 = require("./cardsets/set1_data/set1.json");
 client.set2 = require("./cardsets/set2_data/set2.json");
 client.set3 = require("./cardsets/set3_data/set3.json");
 client.set4 = require("./cardsets/set4_data/set4.json");
+client.globals = require("./cardsets/core/globals.json");
 
 var con = mysql.createConnection({
     host: "sql11.freesqldatabase.com",
@@ -43,6 +44,8 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const msg = message.content.toLowerCase();
+
+    message.channel.send(client.globals["regions"].length);
     
     if(msg.startsWith(prefix+"setupbot")){
 
@@ -50,7 +53,6 @@ client.on("message", (message) => {
 
         message.guild.channels.cache.find((channel) => { 
             if(channel.name === nomeCanal){
-                message.channel.send(client.set1.length);
                 message.channel.send(
                 embeded.setTitle("Error")
                 .setDescription("The bot is already setup " + message.guild.channels.cache.get(channel.id).toString())
