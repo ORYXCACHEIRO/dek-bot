@@ -113,7 +113,6 @@ client.on("message", (message) => {
                     case 1:
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                console.log(client.globals["regions"][z]["name"]);
                                 var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
                                 console.log(result.name); 
                                 cardNames.push(result.name);
@@ -125,7 +124,6 @@ client.on("message", (message) => {
                     case 2:
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                console.log(client.globals["regions"][z]["name"]);
                                 var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
                                 console.log(result.name); 
                                 cardNames.push(result.name);
@@ -137,7 +135,6 @@ client.on("message", (message) => {
                     case 3:
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                console.log(client.globals["regions"][z]["name"]);
                                 var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
                                 console.log(result.name); 
                                 cardNames.push(result.name);
@@ -149,7 +146,6 @@ client.on("message", (message) => {
                     case 4:
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                console.log(client.globals["regions"][z]["name"]);
                                 var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
                                 console.log(result.name); 
                                 cardNames.push(result.name);
@@ -162,25 +158,10 @@ client.on("message", (message) => {
                 }
             }
 
-            for(let i = 0; i<cardNames.length; i++){
-                for(let j = 0; i<cardCount.length; j++){
-                    info = cardNames[i] + " | Nº " + cardCount[j];
-                    printDeck.push(info);
-                }
-            }
-
 
             console.log(cardNames);
             console.log(cardCount);
-            console.log(printDeck);
-            console.log(deck);
-            message.channel.send(
-                embeded.setTitle("Deck")
-                .setDescription(printDeck)
-                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                .setFooter("If you neeed help use ld!help for more commands")
-                .setTimestamp()
-            );
+            
 
         } else {
             if(lorDeckChannelId!=0){
