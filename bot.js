@@ -150,7 +150,7 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 console.log(client.globals["regions"][z]["name"]);
-                                var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
                                 console.log(result.name); 
                                 cardNames.push(result.name);
                                 cardCount.push(deck[i].count);
