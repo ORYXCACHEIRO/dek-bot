@@ -46,6 +46,15 @@ client.on("message", (message) => {
     const msg = message.content.toLowerCase();
 
     var region22 = client.globals["regions"][0].name;
+
+    if(msg.startsWith(prefix+"teste")){
+        var result = client.set1.find(obj => {
+            if(obj.cardCode=="01IO015"){
+                return obj.name;
+            }
+        });
+        console.log(result);
+    }
     
     if(msg.startsWith(prefix+"setupbot")){
 
