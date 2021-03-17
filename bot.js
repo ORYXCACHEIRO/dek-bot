@@ -48,11 +48,8 @@ client.on("message", (message) => {
     var region22 = client.globals["regions"][0].name;
 
     if(msg.startsWith(prefix+"teste")){
-        client.set1['region']=="Shadow Isles".find(obj => {
-            if(obj.cardCode=="01SI042"){
-                console.log(obj.name);
-            }
-        });
+        var result = client.set1.filter( obj => obj.region === 'Shadow Isles');
+        console.log(result);
         
     }
     
