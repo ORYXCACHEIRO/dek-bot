@@ -80,8 +80,51 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
             const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+            
+            var cardNames = new Array;
+
+            var cardCount = new Array;
+
+            var printDeck = new Array;
+
+            for(let i = 0;i<deck.length-1;i++){
+                switch(deck[i].code){
+                    case client.set1["cardCode"]:
+                        cardNames.push(client.set1["name"]);
+                        cardCount.push(deck[i].count);
+                    break;
+                    case client.set2["cardCode"]:
+                        cardNames.push(client.set2["name"]);
+                        cardCount.push(deck[i].count);
+                    break;
+                    case client.set3["cardCode"]:
+                        cardNames.push(client.set3["name"]);
+                        cardCount.push(deck[i].count);
+                    break;
+                    case client.set4["cardCode"]:
+                        cardNames.push(client.set4["name"]);
+                        cardCount.push(deck[i].count);
+                    break;
+                    default: break;
+                }
+            }
+
+            for(let i = 0; i<cardNames.length; i++){
+                for(let j = 0; i<cardCount.length; j++){
+                    info = cardNames[i] + " | Nº " + cardCount[j];
+                    printDeck.push(info);
+                }
+            }
+            
             console.log(deck);
-            message.reply(deck);
+            message.channel.send(
+                embeded.setTitle("Deck")
+                .setDescription(printDeck)
+                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                .setFooter("If you neeed help use ld!help for more commands")
+                .setTimestamp()
+            );
+
         } else {
             if(lorDeckChannelId!=0){
                 message.channel.send(
