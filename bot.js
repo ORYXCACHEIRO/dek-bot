@@ -111,36 +111,48 @@ client.on("message", (message) => {
                 
                 switch(deck[i].set){
                     case 1:
-                        for(let j = 0; j<set1Length;j++){
-                            if(client.set1[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set1[j]["name"]);
+                        for(let z = 0;z<client.globals["regions"].length;z++){
+                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                console.log(client.globals["regions"][z]["name"]);
+                                var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                console.log(result.name); 
+                                cardNames.push(result.name);
                                 cardCount.push(deck[i].count);
                                 break;
                             }
                         }
                     break;
                     case 2:
-                        for(let j = 0; j<set2Length;j++){
-                            if(client.set2[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set2[j]["name"]);
+                        for(let z = 0;z<client.globals["regions"].length;z++){
+                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                console.log(client.globals["regions"][z]["name"]);
+                                var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                console.log(result.name); 
+                                cardNames.push(result.name);
                                 cardCount.push(deck[i].count);
                                 break;
                             }
                         }
                     break;
                     case 3:
-                        for(let j = 0; j<set3Length;j++){
-                            if(client.set3[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set3[j]["name"]);
+                        for(let z = 0;z<client.globals["regions"].length;z++){
+                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                console.log(client.globals["regions"][z]["name"]);
+                                var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                console.log(result.name); 
+                                cardNames.push(result.name);
                                 cardCount.push(deck[i].count);
                                 break;
                             }
                         }
                     break;
                     case 4:
-                        for(let j = 0; j<set4Length;j++){
-                            if(client.set4[j]["cardCode"]==deck[i].code){
-                                cardNames.push(client.set4[j]["name"]);
+                        for(let z = 0;z<client.globals["regions"].length;z++){
+                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                console.log(client.globals["regions"][z]["name"]);
+                                var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                console.log(result.name); 
+                                cardNames.push(result.name);
                                 cardCount.push(deck[i].count);
                                 break;
                             }
