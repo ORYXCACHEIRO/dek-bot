@@ -45,9 +45,19 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
 
-    var region22 = client.globals["regions"].abbreviation;
+    var region22 = client.globals["regions"].name;
 
-    message.channel.send(region22);
+    if(msg.startsWith(prefix+"teste")){
+        var  count = 0;
+        for(let i = 0; i<client.set1["region"].length;i++){
+
+            if(client.set1["region"]==region22){
+                count++;
+            }
+            
+        }
+        console.log(count);
+    }
     
     if(msg.startsWith(prefix+"setupbot")){
 
