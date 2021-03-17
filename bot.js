@@ -45,7 +45,6 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
 
-    message.channel.send(client.globals["regions"].length);
     
     if(msg.startsWith(prefix+"setupbot")){
 
@@ -89,8 +88,13 @@ client.on("message", (message) => {
             var printDeck = new Array;
 
             for(let i = 0;i<deck.length-1;i++){
+
+                let regionShorCut = deck[i].faction.shortCode;
+                let region = client.globals["regions"].length;
+                
                 switch(deck[i].set){
                     case 1:
+                    
                     for(let j = 0; j<client.set1.length;j++){
                         if(client.set1[j]["cardCode"]==deck[i].code){
                             cardNames.push(client.set1[j]["name"]);
@@ -133,11 +137,6 @@ client.on("message", (message) => {
                 }
             }
 
-
-            console.log(cardNames);
-            console.log(cardCount);
-            console.log(printDeck);
-            console.log(deck);
             message.channel.send(
                 embeded.setTitle("Deck")
                 .setDescription(printDeck)
