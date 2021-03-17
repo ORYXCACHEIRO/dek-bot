@@ -22,7 +22,7 @@ client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
 client.on("ready", () => {
     console.log("Bot ready and online (and updated as well)");
-    client.user.setActivity ("Being a good bot");                                                                                                                                                                                                                                                                                                                                                         
+    client.user.setActivity ("ld!help for commands");                                                                                                                                                                                                                                                                                                                                                         
 });
           
 client.on("message", (message) => {
@@ -37,7 +37,7 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
     
-    if(msg==prefix+"setupbot"){
+    if(msg.startsWith(prefix+"setupbot")){
 
         var found = false;
 
@@ -70,9 +70,9 @@ client.on("message", (message) => {
 
     }
 
-    else if(msg==prefix+"deck"){
+    else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            const deck = DeckEncoder.decode('CMCACAYFAQBAEBIBAYBAIBYDDIDACBILCQKROIRKAIAQCBIHAICAOOJ3AEAQCBID');
+            const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
             message.reply(deck);
         } else {
             if(lorDeckChannelId!=0){
