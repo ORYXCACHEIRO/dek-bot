@@ -95,7 +95,7 @@ client.on("message", (message) => {
                 switch(deck[i].set){
                     case 1:
                     
-                    for(let j = 0; j<client.set1["region"].length;j++){
+                    for(let j = 0; j<client.set1[0]["region"].length;j++){
                         if(client.set1[j]["cardCode"]==deck[i].code){
                             cardNames.push(client.set1[j]["name"]);
                             cardCount.push(deck[i].count);
@@ -103,7 +103,7 @@ client.on("message", (message) => {
                     }
                     break;
                     case 2:
-                        for(let j = 0; j<client.set2["region"].length;j++){
+                        for(let j = 0; j<client.set2[0]["region"].length;j++){
                             if(client.set2[j]["cardCode"]==deck[i].code){
                                 cardNames.push(client.set2[j]["name"]);
                                 cardCount.push(deck[i].count);
@@ -111,7 +111,7 @@ client.on("message", (message) => {
                         }
                     break;
                     case 3:
-                        for(let j = 0; j<client.set3["region"].length;j++){
+                        for(let j = 0; j<client.set3[0]["region"].length;j++){
                             if(client.set3[j]["cardCode"]==deck[i].code){
                                 cardNames.push(client.set3[j]["name"]);
                                 cardCount.push(deck[i].count);
@@ -119,7 +119,7 @@ client.on("message", (message) => {
                         }
                     break;
                     case 4:
-                        for(let j = 0; j<client.set4["region"].length;j++){
+                        for(let j = 0; j<client.set4[0]["region"].length;j++){
                             if(client.set4[j]["cardCode"]==deck[i].code){
                                 cardNames.push(client.set4[j]["name"]);
                                 cardCount.push(deck[i].count);
