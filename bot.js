@@ -61,8 +61,6 @@ client.on("message", (message) => {
                 .setTimestamp()
                 );
                 found = true;
-            } else {
-                found = false;
             }
         });
 
