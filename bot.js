@@ -187,22 +187,25 @@ client.on("message", (message) => {
             if(cardName!="" && cardImg!=""){
                 message.channel.send(
                     embeded.setTitle(cardName)
+                    .setDescription("")
                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                     .setImage(cardImg)
                     .setFooter("If you neeed help use ld!help for more commands")
                     .setTimestamp()
                 );
-                if(cardChampLvl1Name!="" && cardChampLvl1Img!=""){
+                if(cardChampLvl1Img!=""){
                     message.channel.send(
-                        embeded.setTitle(cardChampLvl1Name + "Level Up")
+                        embeded.setTitle(cardName + "Level Up")
+                        .setDescription("")
                         .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                         .setImage(cardChampLvl1Img)
                         .setFooter("If you neeed help use ld!help for more commands")
                         .setTimestamp()
                     );
-                    if(cardChampLvl2Name!="" && cardChampLvl2Img!=""){
+                    if(cardChampLvl2Img!=""){
                         message.channel.send(
-                            embeded.setTitle(cardChampLvl2Name + "Level GROSSO")
+                            embeded.setTitle(cardName + "Level GROSSO")
+                            .setDescription("")
                             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                             .setImage(cardChampLvl2Img)
                             .setFooter("If you neeed help use ld!help for more commands")
