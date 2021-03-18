@@ -47,7 +47,7 @@ client.on("message", (message) => {
 
     if(msg.startsWith(prefix+"teste")){
         var messageee = message.content.replace(prefix+"teste",'').toLowerCase();
-        var result = client.set2.filter( obj => obj.name.toLowerCase()=="twisted fate")[0];
+        var result = client.set2.filter( obj => obj.name.toLowerCase()==messageee)[0];
         var cardName = result.name;
         var cardImg = result.assets[0].gameAbsolutePath;
         console.log(result)
@@ -106,7 +106,7 @@ client.on("message", (message) => {
             for(let i = 0;i<=numset;i++){
                 if(i==1){
                     let result = client.set1.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!={}){
+                    if(result!=null){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
@@ -122,7 +122,7 @@ client.on("message", (message) => {
                 }
                 else if(i==3){
                     let result = client.set3.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!={}){
+                    if(result!=null){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
@@ -130,7 +130,7 @@ client.on("message", (message) => {
                 }
                 else if(i==4){
                     let result = client.set4.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!={}){
+                    if(result!=null){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
