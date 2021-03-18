@@ -118,8 +118,8 @@ client.on("message", (message) => {
                             cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                             break;
                         }else {
-                            cardName = result.name;
-                            cardImg = result.assets[0].gameAbsolutePath;
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
                             break;
                         }   
                     }
@@ -127,15 +127,15 @@ client.on("message", (message) => {
                 else if(i==2){
                     let result = client.set2.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        if(result.rarity=="Champion"){
+                        if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
                             cardChampLvl1Name = result[1].name;
                             cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                             break;
                         }else {
-                            cardName = result.name;
-                            cardImg = result.assets[0].gameAbsolutePath;
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
                             break;
                         } 
                     }
@@ -143,15 +143,15 @@ client.on("message", (message) => {
                 else if(i==3){
                     let result = client.set3.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        if(result.rarity=="Champion"){
+                        if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
                             cardChampLvl1Name = result[1].name;
                             cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                             break;
                         }else {
-                            cardName = result.name;
-                            cardImg = result.assets[0].gameAbsolutePath;
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
                             break;
                         } 
                     }
@@ -159,14 +159,14 @@ client.on("message", (message) => {
                 else if(i==4){
                     let result = client.set4.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        if(result.rarity=="Champion"){
+                        if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
                             cardChampLvl1Name = result[1].name;
                             cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                             break;
                         } 
-                        else if(result.rarity=="Champion" && result.subtype=="ASCENDED"){
+                        else if(result[0].rarity=="Champion" && result[0].subtype=="ASCENDED"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
                             cardChampLvl1Name = result[1].name;
@@ -176,8 +176,8 @@ client.on("message", (message) => {
                             break;
                         }
                         else {
-                            cardName = result.name;
-                            cardImg = result.assets[0].gameAbsolutePath;
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
                             break;
                         } 
                     }
