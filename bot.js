@@ -44,21 +44,6 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const msg = message.content.toLowerCase();
-
-    if(msg.startsWith(prefix+"teste")){
-         var messageee = message.content.replace(prefix+"teste",'').toLowerCase();
-        var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee);
-        console.log(result)
-        console.log(messageee);
-    }
-
-    if(msg==prefix+"register"){
-        if(message.channel==nomeCanal){
-            //faz coisas
-        } else{
-            wrongChannel();
-        }
-    }
     
     if(msg==prefix+"setupbot"){
 
@@ -91,6 +76,23 @@ client.on("message", (message) => {
 
     }
 
+    else if(msg==prefix+"register"){
+        if(message.channel==nomeCanal){
+            //faz coisas
+        } else{
+            wrongChannel();
+        }
+    }
+
+    else if(msg.startsWith(prefix+"teste")){
+        var messageee = message.content.replace(prefix+"teste",'').toLowerCase();
+        
+        var coisa2 = ""+messageee;
+        var result = client.set2.filter( obj => obj.name.toLowerCase() == coisa2);
+        console.log(result)
+        console.log(messageee);
+   }
+
     else if(msg.startsWith(prefix+"card")){
             if(message.channel.name==nomeCanal){
             const card = message.content.replace(prefix+"card",'').toLowerCase();
@@ -101,32 +103,32 @@ client.on("message", (message) => {
 
             for(let i = 0;i<=numset;i++){
                 if(i==1){
-                    let result = client.set1.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=null){
+                    let result = client.set1.filter( obj => obj.name.toLowerCase()==card);
+                    if(result!=[]){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
                     }
                 } 
                 else if(i==2){
-                    let result = client.set2.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!={}){
+                    let result = client.set2.filter( obj => obj.name.toLowerCase()==card);
+                    if(result!=[]){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
                     }
                 }
                 else if(i==3){
-                    let result = client.set3.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=null){
+                    let result = client.set3.filter( obj => obj.name.toLowerCase()==card);
+                    if(result!=[]){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
                     }
                 }
                 else if(i==4){
-                    let result = client.set4.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=null){
+                    let result = client.set4.filter( obj => obj.name.toLowerCase()==card);
+                    if(result!=[]){
                         cardName = result.name;
                         cardImg = result.assets[0].gameAbsolutePath;
                         break;
