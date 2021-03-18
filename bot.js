@@ -90,7 +90,7 @@ client.on("message", (message) => {
         var coisa2 = "twisted fate";
         var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee);
         console.log(result);
-        console.log(result.name[0]);
+        console.log(result.name);
         console.log(coisa2);
         console.log(messageee);
    }
