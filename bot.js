@@ -109,7 +109,6 @@ client.on("message", (message) => {
             var numset = 4;
 
             for(let i = 1;i<=numset;i++){
-                console.log(i);
                 switch(i){
                     case 1: 
                         var result = client.set1.filter( obj => obj.name.toLowerCase()==card);
