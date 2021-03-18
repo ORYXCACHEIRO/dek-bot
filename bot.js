@@ -103,8 +103,6 @@ client.on("message", (message) => {
             var cardName = "";
             var cardImg = "";
 
-            var cardChampLvl1Name = "";
-            var cardChampLvl2Name = "";
             var cardChampLvl1Img = "";
             var cardChampLvl2Img = "";
 
@@ -119,7 +117,6 @@ client.on("message", (message) => {
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
-                                cardChampLvl1Name = result[1].name;
                                 cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                                 break;
                             }
@@ -136,7 +133,6 @@ client.on("message", (message) => {
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
-                                cardChampLvl1Name = result[1].name;
                                 cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                                 break;
                             }else {
@@ -152,7 +148,6 @@ client.on("message", (message) => {
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
-                                cardChampLvl1Name = result[1].name;
                                 cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                                 break;
                             }else {
@@ -168,16 +163,13 @@ client.on("message", (message) => {
                             if(result[0].rarity=="Champion" && result[0].subtype=="ASCENDED"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
-                                cardChampLvl1Name = result[1].name;
-                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                                cardChampLvl2Name = result[2].name;
-                                cardChampLvl2Img = result[2].assets[0].gameAbsolutePath;
+                                cardChampLvl1Img = result[2].assets[0].gameAbsolutePath;
+                                cardChampLvl2Img = result[1].assets[0].gameAbsolutePath; 
                                 break;
                             } 
                             else if(result[0].rarity=="Champion" && result[0].subtype!="ASCENDED"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
-                                cardChampLvl1Name = result[1].name;
                                 cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                                 break;
                             }
@@ -208,16 +200,17 @@ client.on("message", (message) => {
                         .setFooter("If you neeed help use ld!help for more commands")
                         .setTimestamp()
                     );
+                    if(cardChampLvl2Name!="" && cardChampLvl2Img!=""){
+                        message.channel.send(
+                            embeded.setTitle(cardChampLvl2Name + "Level GROSSO")
+                            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                            .setImage(cardChampLvl2Img)
+                            .setFooter("If you neeed help use ld!help for more commands")
+                            .setTimestamp()
+                        );
+                    }
                 }
-                if(cardChampLvl2Name!="" && cardChampLvl2Img!=""){
-                    message.channel.send(
-                        embeded.setTitle(cardChampLvl2Name + "Level GROSSO")
-                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                        .setImage(cardChampLvl2Img)
-                        .setFooter("If you neeed help use ld!help for more commands")
-                        .setTimestamp()
-                    );
-                }
+                
             } else {
                 message.channel.send(
                     embeded.setTitle("Error")
