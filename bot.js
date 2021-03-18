@@ -87,7 +87,7 @@ client.on("message", (message) => {
     }
 
     else if(msg.startsWith(prefix+"card")){
-        if(message.channel.name==nomeCanal){
+            if(message.channel.name==nomeCanal){
             const card = message.content.replace(prefix+"deck",'').toLowerCase();
             var cardName = "";
             var cardImg = "";
