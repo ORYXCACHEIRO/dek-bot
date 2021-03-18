@@ -88,7 +88,7 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"card")){
             if(message.channel.name==nomeCanal){
-            const card = message.content.replace(prefix+"deck",'').toLowerCase();
+            const card = message.content.replace(prefix+"card",'').toLowerCase();
             var cardName = "";
             var cardImg = "";
 
@@ -97,7 +97,7 @@ client.on("message", (message) => {
             for(let i = 1;i<=numset;i++){
                 if(i==1){
                     var result = client.set1.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=[]){
+                    if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
                         break;
@@ -105,7 +105,7 @@ client.on("message", (message) => {
                 } 
                 else if(i==2){
                     var result = client.set2.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=[]){
+                    if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
                         break;
@@ -113,7 +113,7 @@ client.on("message", (message) => {
                 }
                 else if(i==3){
                     var result = client.set3.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=[]){
+                    if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
                         break;
@@ -121,7 +121,7 @@ client.on("message", (message) => {
                 }
                 else if(i==4){
                     var result = client.set4.filter( obj => obj.name.toLowerCase()==card)[0];
-                    if(result!=[]){
+                    if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
                         break;
