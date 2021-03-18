@@ -96,7 +96,7 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"card")){
             if(message.channel.name==nomeCanal){
-            const card = message.content.replace(prefix+"teste","").toLowerCase().substring(1);
+            const card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
             var cardName = "";
             var cardImg = "";
 
@@ -117,7 +117,8 @@ client.on("message", (message) => {
                             cardChampLvl1Name = result[1].name;
                             cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                             break;
-                        }else {
+                        }
+                        else {
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
                             break;
