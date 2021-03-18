@@ -108,81 +108,85 @@ client.on("message", (message) => {
 
             var numset = 4;
 
-            for(let i = 0;i<=numset;i++){
-                if(i==1){
-                    var result = client.set1.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!="undefined"){
-                        if(result[0].rarity=="Champion"){
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            cardChampLvl1Name = result[1].name;
-                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                            break;
+            for(let i = 1;i<=numset;i++){
+                console.log(i);
+                switch(i){
+                    case 1: 
+                        var result = client.set1.filter( obj => obj.name.toLowerCase()==card);
+                        if(result!="undefined"){
+                            if(result[0].rarity=="Champion"){
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                cardChampLvl1Name = result[1].name;
+                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                                break;
+                            }
+                            else {
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                break;
+                            }   
                         }
-                        else {
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            break;
-                        }   
-                    }
-                } 
-                else if(i==2){
-                    var result = client.set2.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!="undefined"){
-                        if(result[0].rarity=="Champion"){
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            cardChampLvl1Name = result[1].name;
-                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                            break;
-                        }else {
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            break;
-                        } 
-                    }
-                }
-                else if(i==3){
-                    var result = client.set3.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!="undefined"){
-                        if(result[0].rarity=="Champion"){
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            cardChampLvl1Name = result[1].name;
-                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                            break;
-                        }else {
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            break;
-                        } 
-                    }
-                }
-                else if(i==4){
-                    var result = client.set4.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!="undefined"){
-                        if(result[0].rarity=="Champion"){
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            cardChampLvl1Name = result[1].name;
-                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                            break;
-                        } 
-                        else if(result[0].rarity=="Champion" && result[0].subtype=="ASCENDED"){
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            cardChampLvl1Name = result[1].name;
-                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                            cardChampLvl2Name = result[2].name;
-                            cardChampLvl2Img = result[2].assets[0].gameAbsolutePath;
-                            break;
+                        break;
+                    case 2: 
+                        var result = client.set2.filter( obj => obj.name.toLowerCase()==card);
+                        if(result!="undefined"){
+                            if(result[0].rarity=="Champion"){
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                cardChampLvl1Name = result[1].name;
+                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                                break;
+                            }else {
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                break;
+                            } 
                         }
-                        else {
-                            cardName = result[0].name;
-                            cardImg = result[0].assets[0].gameAbsolutePath;
-                            break;
-                        } 
-                    }
+                    break;
+                    case 3: 
+                        var result = client.set3.filter( obj => obj.name.toLowerCase()==card);
+                        if(result!="undefined"){
+                            if(result[0].rarity=="Champion"){
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                cardChampLvl1Name = result[1].name;
+                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                                break;
+                            }else {
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                break;
+                            } 
+                        }
+                    break;
+                    case 4: 
+                        var result = client.set4.filter( obj => obj.name.toLowerCase()==card);
+                        if(result!="undefined"){
+                            if(result[0].rarity=="Champion"){
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                cardChampLvl1Name = result[1].name;
+                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                                break;
+                            } 
+                            else if(result[0].rarity=="Champion" && result[0].subtype=="ASCENDED"){
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                cardChampLvl1Name = result[1].name;
+                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                                cardChampLvl2Name = result[2].name;
+                                cardChampLvl2Img = result[2].assets[0].gameAbsolutePath;
+                                break;
+                            }
+                            else {
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                break;
+                            } 
+                        }
+                    break;
+                    default: break;
                 }
             }
 
