@@ -47,7 +47,7 @@ client.on("message", (message) => {
 
     var region22 = client.globals["regions"][0].name;
 
-    if(msg.startsWith(prefix+"register")){
+    if(msg.content==prefix+"register"){
         if(message.channel==nomeCanal){
             //faz coisas
         } else{
@@ -55,7 +55,7 @@ client.on("message", (message) => {
         }
     }
     
-    if(msg.startsWith(prefix+"setupbot")){
+    if(msg.content==prefix+"setupbot"){
 
         var found = false;
 
