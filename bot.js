@@ -87,9 +87,10 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"teste")){
         var messageee = message.content.replace(prefix+"teste",'').toLowerCase();
         
-        var coisa2 = ""+messageee;
+        var coisa2 = "twisted fate";
         var result = client.set2.filter( obj => obj.name.toLowerCase() == coisa2);
-        console.log(result)
+        console.log(result);
+        console.log(coisa2);
         console.log(messageee);
    }
 
