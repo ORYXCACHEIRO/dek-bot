@@ -45,7 +45,13 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
 
-    var region22 = client.globals["regions"][0].name;
+    if(msg==prefix+"teste"){
+        let result = client.set2.filter( obj => obj.name=="twisted fate")[0];
+        var cardName = result.name;
+        var cardImg = result.assets.gameAbsolutePath;
+        console.log(cardName);
+        console.log(cardImg);
+    }
 
     if(msg==prefix+"register"){
         if(message.channel==nomeCanal){
