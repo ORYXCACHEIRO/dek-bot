@@ -68,6 +68,7 @@ client.on("message", (message) => {
                     embeded.setTitle("Bot Setup")
                     .setDescription("The bot was succefully setup " + message.guild.channels.cache.get(chanel.id).toString())
                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                     .setFooter("If you neeed help use ld!help for more commands")
                     .setTimestamp()
                 )
@@ -83,19 +84,6 @@ client.on("message", (message) => {
             wrongChannel();
         }
     }
-
-    else if(msg.startsWith(prefix+"teste")){
-        var messageee = message.content.replace(prefix+"teste","").toLowerCase().substring(1);
-        
-        var coisa2 = "twisted fate";
-        var result = client.set4.filter( obj => obj.name.toLowerCase() == messageee);
-        console.log(result);
-        if(result.length==0){
-            console.log(coisa2);
-            console.log(messageee + "gay");
-        }
-        
-   }
 
     else if(msg.startsWith(prefix+"card")){
         if(message.channel.name==nomeCanal){
