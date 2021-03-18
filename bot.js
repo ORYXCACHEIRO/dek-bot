@@ -111,7 +111,7 @@ client.on("message", (message) => {
             for(let i = 0;i<=numset;i++){
                 if(i==1){
                     let result = client.set1.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!=[]){
+                    if(result!="undefined"){
                         if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
@@ -128,7 +128,7 @@ client.on("message", (message) => {
                 } 
                 else if(i==2){
                     let result = client.set2.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!=[]){
+                    if(result!="undefined"){
                         if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
@@ -144,7 +144,7 @@ client.on("message", (message) => {
                 }
                 else if(i==3){
                     let result = client.set3.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!=[]){
+                    if(result!="undefined"){
                         if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
@@ -160,7 +160,7 @@ client.on("message", (message) => {
                 }
                 else if(i==4){
                     let result = client.set4.filter( obj => obj.name.toLowerCase()==card);
-                    if(result!=[]){
+                    if(result!="undefined"){
                         if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
