@@ -46,10 +46,10 @@ client.on("message", (message) => {
     const msg = message.content.toLowerCase();
 
     if(msg.startsWith(prefix+"teste")){
-        var messageee = message.content.replace(prefix+"card",'').toLowerCase();
+        var messageee = message.content.replace(prefix+"teste",'').toLowerCase();
         var result = client.set2.filter( obj => obj.name.toLowerCase()=="twisted fate")[0];
         var cardName = result.name;
-        var cardImg = result.assets.gameAbsolutePath;
+        var cardImg = result.assets.gameAbsolutePath[0];
         console.log(cardName);
         console.log(cardImg);
         console.log(messageee);
