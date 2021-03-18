@@ -165,20 +165,20 @@ client.on("message", (message) => {
                     case 4: 
                         var result = client.set4.filter( obj => obj.name.toLowerCase()==card);
                         if(result.length>0){
-                            if(result[0].rarity=="Champion"){
-                                cardName = result[0].name;
-                                cardImg = result[0].assets[0].gameAbsolutePath;
-                                cardChampLvl1Name = result[1].name;
-                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
-                                break;
-                            } 
-                            else if(result[0].rarity=="Champion" && result[0].subtype=="ASCENDED"){
+                            if(result[0].rarity=="Champion" && result[0].subtype=="ASCENDED"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
                                 cardChampLvl1Name = result[1].name;
                                 cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                                 cardChampLvl2Name = result[2].name;
                                 cardChampLvl2Img = result[2].assets[0].gameAbsolutePath;
+                                break;
+                            } 
+                            else if(result[0].rarity=="Champion" && result[0].subtype!="ASCENDED"){
+                                cardName = result[0].name;
+                                cardImg = result[0].assets[0].gameAbsolutePath;
+                                cardChampLvl1Name = result[1].name;
+                                cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
                                 break;
                             }
                             else {
