@@ -45,12 +45,14 @@ client.on("message", (message) => {
 
     const msg = message.content.toLowerCase();
 
-    if(msg==prefix+"teste"){
-        var result = client.set2.filter( obj => obj.name=="Twisted Fate")[0];
+    if(msg.startsWith(prefix+"teste")){
+        var messageee = message.content.replace(prefix+"card",'').toLowerCase();
+        var result = client.set2.filter( obj => obj.name.toLowerCase()=="twisted fate")[0];
         var cardName = result.name;
         var cardImg = result.assets.gameAbsolutePath;
         console.log(cardName);
         console.log(cardImg);
+        console.log(messageee);
     }
 
     if(msg==prefix+"register"){
