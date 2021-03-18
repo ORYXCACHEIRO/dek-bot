@@ -96,7 +96,7 @@ client.on("message", (message) => {
 
             for(let i = 1;i<=numset;i++){
                 if(i==1){
-                    var result = client.set1.filter( obj => obj.name.toLowerCase()==card)[0];
+                    var result = client.set1.filter( obj => obj.name==card)[0];
                     if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
@@ -104,7 +104,7 @@ client.on("message", (message) => {
                     }
                 } 
                 else if(i==2){
-                    var result = client.set2.filter( obj => obj.name.toLowerCase()==card)[0];
+                    var result = client.set2.filter( obj => obj.name==card)[0];
                     if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
@@ -112,7 +112,7 @@ client.on("message", (message) => {
                     }
                 }
                 else if(i==3){
-                    var result = client.set3.filter( obj => obj.name.toLowerCase()==card)[0];
+                    var result = client.set3.filter( obj => obj.name==card)[0];
                     if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
@@ -120,7 +120,7 @@ client.on("message", (message) => {
                     }
                 }
                 else if(i==4){
-                    var result = client.set4.filter( obj => obj.name.toLowerCase()==card)[0];
+                    var result = client.set4.filter( obj => obj.name==card)[0];
                     if(result!=""){
                         cardName = result.name;
                         cardImg = result.assets.gameAbsolutePath;
