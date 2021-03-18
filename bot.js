@@ -68,7 +68,6 @@ client.on("message", (message) => {
                     embeded.setTitle("Bot Setup")
                     .setDescription("The bot was succefully setup " + message.guild.channels.cache.get(chanel.id).toString())
                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                     .setFooter("If you neeed help use ld!help for more commands")
                     .setTimestamp()
                 )
