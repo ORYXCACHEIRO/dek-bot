@@ -89,13 +89,14 @@ client.on("message", (message) => {
         
         var coisa2 = "twisted fate";
         var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee);
+        console.log(result);
         console.log(result[0].name);
         console.log(coisa2);
         console.log(messageee);
    }
 
     else if(msg.startsWith(prefix+"card")){
-            if(message.channel.name==nomeCanal){
+        if(message.channel.name==nomeCanal){
             var card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
             var cardName = "";
             var cardImg = "";
