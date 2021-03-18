@@ -88,9 +88,9 @@ client.on("message", (message) => {
         var messageee = message.content.replace(prefix+"teste","").toLowerCase().substring(2);
         
         var coisa2 = "twisted fate";
-        var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee);
+        var result = client.set4.filter( obj => obj.name.toLowerCase() == messageee);
         console.log(result);
-        console.log(result[0].name);
+        console.log(result[0].rarity);
         console.log(coisa2);
         console.log(messageee);
    }
