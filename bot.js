@@ -88,16 +88,16 @@ client.on("message", (message) => {
         var messageee = message.content.replace(prefix+"teste","").toLowerCase().substring(2);
         
         var coisa2 = "twisted fate";
-        var result = client.set2.filter( obj => obj.name.toLowerCase() == coisa2);
+        var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee);
         console.log(result);
-        console.log(result.name);
+        console.log(result[0].name);
         console.log(coisa2);
         console.log(messageee);
    }
 
     else if(msg.startsWith(prefix+"card")){
         if(message.channel.name==nomeCanal){
-            var card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
+            var card = message.content.replace(prefix+"card","").toLowerCase().substring(2);
             var cardName = "";
             var cardImg = "";
 
