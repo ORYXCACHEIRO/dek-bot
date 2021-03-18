@@ -46,20 +46,6 @@ client.on("message", (message) => {
     const msg = message.content.toLowerCase();
 
     var region22 = client.globals["regions"][0].name;
-
-    if(msg.startsWith(prefix+"teste")){
-        var result = client.set1.filter( obj => obj.region === 'Shadow Isles' && obj.cardCode=="01SI042")[0];
-        console.log(result.name);   
-    }
-
-    
-    if(msg.startsWith(prefix+"coisa")){
-        for(let z = 0;z<client.globals["regions"].length;z++){
-            if(client.globals["regions"][z]["abbreviation"]=="PZ"){
-                console.log(client.globals["regions"][z]["name"]);
-            }
-        }
-    }
     
     if(msg.startsWith(prefix+"setupbot")){
 
@@ -157,21 +143,9 @@ client.on("message", (message) => {
 
         } else {
             if(lorDeckChannelId!=0){
-                message.channel.send(
-                    embeded.setTitle("Error")
-                    .setDescription("To use this command you need to be in the " + message.guild.channels.cache.get(lorDeckChannelId()).toString() + " channel")
-                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                    .setFooter("If you neeed help use ld!help for more commands")
-                    .setTimestamp()
-                );
+                wrongChannel();
             } else {
-                message.channel.send(
-                    embeded.setTitle("Error")
-                    .setDescription("To use the bot you need to set it up")
-                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                    .setFooter("If you neeed help use ld!help for more commands")
-                    .setTimestamp()
-                );
+                missChannel();
             }
         }  
     }
@@ -184,6 +158,26 @@ client.on("message", (message) => {
             }
         });
         return idd;
+    }
+
+    function wrongChannel(){
+        message.channel.send(
+            embeded.setTitle("Error")
+            .setDescription("To use this command you need to be in the " + message.guild.channels.cache.get(lorDeckChannelId()).toString() + " channel")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
+    }
+
+    function missChannel(){
+        message.channel.send(
+            embeded.setTitle("Error")
+            .setDescription("To use the bot you need to set it up")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
     }
 
 });
