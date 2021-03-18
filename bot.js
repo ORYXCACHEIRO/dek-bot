@@ -85,12 +85,12 @@ client.on("message", (message) => {
     }
 
     else if(msg.startsWith(prefix+"teste")){
-        var messageee = message.content.replace(prefix+"teste","").toLowerCase().substring(1);
+        var messageee = message.content.replace(prefix+"teste","").toLowerCase();
         
         var coisa2 = "twisted fate";
-        var result = client.set2.filter( obj => obj.name.toLowerCase() == coisa2);
+        var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee.substring(1));
         console.log(result);
-        console.log(result.name);
+        console.log(result[0].name);
         console.log(coisa2);
         console.log(messageee);
    }
