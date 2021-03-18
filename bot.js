@@ -96,43 +96,35 @@ client.on("message", (message) => {
 
             for(let i = 1;i<=numset;i++){
                 if(i==1){
-                    for(let z = 0;z<client.globals["regions"].length;z++){
-                        if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                            var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.name.toLowerCase()==card)[0];
-                            cardName = result.name;
-                            cardImg = result.assets.gameAbsolutePath;
-                            break;
-                        }
+                    var result = client.set1.filter( obj => obj.name.toLowerCase()==card)[0];
+                    if(result!=""){
+                        cardName = result.name;
+                        cardImg = result.assets.gameAbsolutePath;
+                        break;
                     }
                 } 
                 else if(i==2){
-                    for(let z = 0;z<client.globals["regions"].length;z++){
-                        if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                            var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.name.toLowerCase()==card)[0];
-                            cardName = result.name;
-                            cardImg = result.assets.gameAbsolutePath;
-                            break;
-                        }
+                    var result = client.set2.filter( obj => obj.name.toLowerCase()==card)[0];
+                    if(result!=""){
+                        cardName = result.name;
+                        cardImg = result.assets.gameAbsolutePath;
+                        break;
                     }
                 }
                 else if(i==3){
-                    for(let z = 0;z<client.globals["regions"].length;z++){
-                        if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                            var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.name.toLowerCase()==card)[0];
-                            cardName = result.name;
-                            cardImg = result.assets.gameAbsolutePath;
-                            break;
-                        }
+                    var result = client.set3.filter( obj => obj.name.toLowerCase()==card)[0];
+                    if(result!=""){
+                        cardName = result.name;
+                        cardImg = result.assets.gameAbsolutePath;
+                        break;
                     }
                 }
                 else if(i==4){
-                    for(let z = 0;z<client.globals["regions"].length;z++){
-                        if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                            var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.name.toLowerCase()==card)[0];
-                            cardName = result.name;
-                            cardImg = result.assets.gameAbsolutePath;
-                            break;
-                        }
+                    var result = client.set4.filter( obj => obj.name.toLowerCase()==card)[0];
+                    if(result!=""){
+                        cardName = result.name;
+                        cardImg = result.assets.gameAbsolutePath;
+                        break;
                     }
                 }
             }
