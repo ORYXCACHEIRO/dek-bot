@@ -47,9 +47,10 @@ client.on("message", (message) => {
 
     if(msg.startsWith(prefix+"teste")){
         var messageee = message.content.replace(prefix+"teste",'').toLowerCase();
-        var result = client.set2.filter( obj => obj.name.toLowerCase()=="twisted fate")[0];
+        var result = client.set2.filter( obj => obj.name.toLowerCase()=="t")[0];
         var cardName = result.name;
         var cardImg = result.assets[0].gameAbsolutePath;
+        console.log(result)
         console.log(cardName);
         console.log(cardImg);
         console.log(messageee);
@@ -102,7 +103,7 @@ client.on("message", (message) => {
 
             var numset = 4;
 
-            for(let i = 1;i<=numset;i++){
+            for(let i = 0;i<=numset;i++){
                 if(i==1){
                     let result = client.set1.filter( obj => obj.name.toLowerCase()==card)[0];
                     if(result!=""){
