@@ -89,14 +89,14 @@ client.on("message", (message) => {
         
         var coisa2 = "twisted fate";
         var result = client.set2.filter( obj => obj.name.toLowerCase() == messageee);
-        console.log(result);
+        console.log(result[0].name);
         console.log(coisa2);
         console.log(messageee);
    }
 
     else if(msg.startsWith(prefix+"card")){
             if(message.channel.name==nomeCanal){
-            const card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
+            var card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
             var cardName = "";
             var cardImg = "";
 
@@ -111,7 +111,7 @@ client.on("message", (message) => {
                 if(i==1){
                     let result = client.set1.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        if(result.rarity=="Champion"){
+                        if(result[0].rarity=="Champion"){
                             cardName = result[0].name;
                             cardImg = result[0].assets[0].gameAbsolutePath;
                             cardChampLvl1Name = result[1].name;
