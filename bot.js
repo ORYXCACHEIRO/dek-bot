@@ -194,7 +194,7 @@ client.on("message", (message) => {
                 );
                 if(cardChampLvl1Img!=""){
                     message.channel.send(
-                        embeded.setTitle(cardName + "Level Up")
+                        embeded.setTitle(cardName + " Level Up")
                         .setDescription("")
                         .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                         .setImage(cardChampLvl1Img)
