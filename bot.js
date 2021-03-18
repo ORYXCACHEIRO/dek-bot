@@ -115,7 +115,7 @@ client.on("message", (message) => {
                 switch(i){
                     case 1: 
                         var result = client.set1.filter( obj => obj.name.toLowerCase()==card);
-                        if(result!="undefined"){
+                        if(result.length>0){
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
@@ -132,7 +132,7 @@ client.on("message", (message) => {
                         break;
                     case 2: 
                         var result = client.set2.filter( obj => obj.name.toLowerCase()==card);
-                        if(result!="undefined"){
+                        if(result.length>0){
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
@@ -148,7 +148,7 @@ client.on("message", (message) => {
                     break;
                     case 3: 
                         var result = client.set3.filter( obj => obj.name.toLowerCase()==card);
-                        if(result!="undefined"){
+                        if(result.length>0){
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
@@ -164,7 +164,7 @@ client.on("message", (message) => {
                     break;
                     case 4: 
                         var result = client.set4.filter( obj => obj.name.toLowerCase()==card);
-                        if(result!="undefined"){
+                        if(result.length>0){
                             if(result[0].rarity=="Champion"){
                                 cardName = result[0].name;
                                 cardImg = result[0].assets[0].gameAbsolutePath;
