@@ -96,9 +96,14 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"card")){
             if(message.channel.name==nomeCanal){
-            const card = message.content.replace(prefix+"card",'').toLowerCase();
+            const card = message.content.replace(prefix+"teste","").toLowerCase().substring(1);
             var cardName = "";
             var cardImg = "";
+
+            var cardChampLvl1Name = "";
+            var cardChampLvl2Name = "";
+            var cardChampLvl1Img = "";
+            var cardChampLvl2Img = "";
 
             var numset = 4;
 
@@ -106,33 +111,75 @@ client.on("message", (message) => {
                 if(i==1){
                     let result = client.set1.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        cardName = result.name;
-                        cardImg = result.assets[0].gameAbsolutePath;
-                        break;
+                        if(result.rarity=="Champion"){
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
+                            cardChampLvl1Name = result[1].name;
+                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                            break;
+                        }else {
+                            cardName = result.name;
+                            cardImg = result.assets[0].gameAbsolutePath;
+                            break;
+                        }   
                     }
                 } 
                 else if(i==2){
                     let result = client.set2.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        cardName = result.name;
-                        cardImg = result.assets[0].gameAbsolutePath;
-                        break;
+                        if(result.rarity=="Champion"){
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
+                            cardChampLvl1Name = result[1].name;
+                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                            break;
+                        }else {
+                            cardName = result.name;
+                            cardImg = result.assets[0].gameAbsolutePath;
+                            break;
+                        } 
                     }
                 }
                 else if(i==3){
                     let result = client.set3.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        cardName = result.name;
-                        cardImg = result.assets[0].gameAbsolutePath;
-                        break;
+                        if(result.rarity=="Champion"){
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
+                            cardChampLvl1Name = result[1].name;
+                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                            break;
+                        }else {
+                            cardName = result.name;
+                            cardImg = result.assets[0].gameAbsolutePath;
+                            break;
+                        } 
                     }
                 }
                 else if(i==4){
                     let result = client.set4.filter( obj => obj.name.toLowerCase()==card);
                     if(result!=[]){
-                        cardName = result.name;
-                        cardImg = result.assets[0].gameAbsolutePath;
-                        break;
+                        if(result.rarity=="Champion"){
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
+                            cardChampLvl1Name = result[1].name;
+                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                            break;
+                        } 
+                        else if(result.rarity=="Champion" && result.subtype=="ASCENDED"){
+                            cardName = result[0].name;
+                            cardImg = result[0].assets[0].gameAbsolutePath;
+                            cardChampLvl1Name = result[1].name;
+                            cardChampLvl1Img = result[1].assets[0].gameAbsolutePath;
+                            cardChampLvl2Name = result[2].name;
+                            cardChampLvl2Img = result[2].assets[0].gameAbsolutePath;
+                            break;
+                        }
+                        else {
+                            cardName = result.name;
+                            cardImg = result.assets[0].gameAbsolutePath;
+                            break;
+                        } 
                     }
                 }
             }
@@ -145,6 +192,24 @@ client.on("message", (message) => {
                     .setFooter("If you neeed help use ld!help for more commands")
                     .setTimestamp()
                 );
+                if(cardChampLvl1Name!="" && cardChampLvl1Img!=""){
+                    message.channel.send(
+                        embeded.setTitle(cardChampLvl1Name + "Level Up")
+                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                        .setImage(cardChampLvl1Img)
+                        .setFooter("If you neeed help use ld!help for more commands")
+                        .setTimestamp()
+                    );
+                }
+                if(cardChampLvl2Name!="" && cardChampLvl2Img!=""){
+                    message.channel.send(
+                        embeded.setTitle(cardChampLvl2Name + "Level GROSSO")
+                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                        .setImage(cardChampLvl2Img)
+                        .setFooter("If you neeed help use ld!help for more commands")
+                        .setTimestamp()
+                    );
+                }
             } else {
                 message.channel.send(
                     embeded.setTitle("Error")
