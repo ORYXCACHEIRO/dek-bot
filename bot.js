@@ -4,7 +4,7 @@ const { DeckEncoder } = require('runeterra');
 
 const fs = require('fs');
 
-const mysql = require("mysql");
+const mongoose = require('mongoose');
 
 var client = new discord.Client();
 
@@ -14,17 +14,6 @@ client.set3 = require("./cardsets/set3_data/set3.json");
 client.set4 = require("./cardsets/set4_data/set4.json");
 client.globals = require("./cardsets/core/globals.json");
 
-var con = mysql.createConnection({
-    host: "sql11.freesqldatabase.com",
-    user: "sql11399230",
-    password: "Qz2uiayKDC",
-    database: "sql11399230"
-});
-
-con.connect(err =>{
-    if(err) throw err;
-    console.log("Connected to DB");
-});
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
@@ -270,10 +259,11 @@ client.on("message", (message) => {
             }
 
             printDeck.sort();
+            printDeck.unshift("MANA | CARTA | Nº DE CARTAS")
 
             message.channel.send(
                 embeded.setTitle("Deck")
-                .setDescription("MANA | CARTA | Nº DE CARTAS \n" + printDeck)
+                .setDescription(printDeck)
                 .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                 .setFooter("If you neeed help use ld!help for more commands")
                 .setTimestamp()
