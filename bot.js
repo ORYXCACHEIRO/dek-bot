@@ -222,8 +222,6 @@ client.on("message", (message) => {
 
             var printDeck = new Array;
 
-            printDeck.push("MANA | CARTA | Nº DE CARTAS");
-
             for(let i = 0;i<deck.length;i++){
                 
                 switch(deck[i].set){
@@ -275,7 +273,7 @@ client.on("message", (message) => {
 
             message.channel.send(
                 embeded.setTitle("Deck")
-                .setDescription(printDeck)
+                .setDescription("MANA | CARTA | Nº DE CARTAS \n" + printDeck)
                 .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                 .setFooter("If you neeed help use ld!help for more commands")
                 .setTimestamp()
