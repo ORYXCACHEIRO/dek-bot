@@ -271,6 +271,8 @@ client.on("message", (message) => {
                 }
             }
 
+            printDeck.sort();
+
             message.channel.send(
                 embeded.setTitle("Deck")
                 .setDescription(printDeck)
