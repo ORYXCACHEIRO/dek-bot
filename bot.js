@@ -187,17 +187,17 @@ client.on("message", (message) => {
                         .setImage(cardChampLvl1Img)
                         .setFooter("If you neeed help use ld!help for more commands")
                         .setTimestamp()
+                    );   
+                }
+                if(cardChampLvl2Img!=""){
+                    message.channel.send(
+                        embeded.setTitle(cardName + " Level GROSSO")
+                        .setDescription("")
+                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                        .setImage(cardChampLvl2Img)
+                        .setFooter("If you neeed help use ld!help for more commands")
+                        .setTimestamp()
                     );
-                    if(cardChampLvl2Img!=""){
-                        message.channel.send(
-                            embeded.setTitle(cardName + "Level GROSSO")
-                            .setDescription("")
-                            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                            .setImage(cardChampLvl2Img)
-                            .setFooter("If you neeed help use ld!help for more commands")
-                            .setTimestamp()
-                        );
-                    }
                 }
                 
             } else {
@@ -222,7 +222,7 @@ client.on("message", (message) => {
 
             var printDeck = new Array;
 
-            printDeck.push("CARTA | Nº DE CARTAS");
+            printDeck.push("MANA | CARTA | Nº DE CARTAS");
 
             for(let i = 0;i<deck.length;i++){
                 
@@ -231,7 +231,7 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.name + " | " + deck[i].count;
+                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
                                 printDeck.push(info);
                                 break;
                             }
@@ -241,7 +241,7 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.name + " | " + deck[i].count;
+                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
                                 printDeck.push(info);
                                 break;
                             }
@@ -251,7 +251,7 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.name + " | " + deck[i].count;
+                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
                                 printDeck.push(info);
                                 break;
                             }
@@ -261,7 +261,7 @@ client.on("message", (message) => {
                         for(let z = 0;z<client.globals["regions"].length;z++){
                             if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
                                 var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.name + " | " + deck[i].count;
+                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
                                 printDeck.push(info);
                                 break;
                             }
