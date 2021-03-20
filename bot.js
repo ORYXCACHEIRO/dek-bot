@@ -81,7 +81,7 @@ client.on("message", (message) => {
     }
 
     else if(msg==prefix+"register"){
-        if(message.channel==nomeCanal){
+        if(message.channel.name==nomeCanal){
             users.findOne({
                 iduser: message.author.id
             }, (err, data) => {
