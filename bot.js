@@ -323,7 +323,18 @@ client.on("message", (message) => {
                                 deckData.deleteOne({
                                     deck : deleteDeckCode
                                 }, (err, data) => {
-                                    if(err) console.log(err)
+                                    if(err){
+                                        console.log(err);
+                                    } else {
+                                        message.channel.send(
+                                            embeded.setTitle("Deck")
+                                            .setDescription("Your deck has been successfully deleted")
+                                            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                            .setImage(cardImg)
+                                            .setFooter("If you neeed help use ld!help for more commands")
+                                            .setTimestamp()
+                                        );
+                                    }
                                 });
                             } else {
                                 errorFindingDeck();
