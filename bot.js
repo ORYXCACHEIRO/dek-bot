@@ -185,7 +185,7 @@ client.on("message", (message) => {
                                 }
 
                                 const newDeck = new deckData({
-                                    deck: message.content.replace(prefix+"updeck",'').substring(1),
+                                    deck: message.content.replace(prefix+"updeck",''),
                                     deckName: deckName.split("/"),
                                     iduser: message.author.id,
                                 });
