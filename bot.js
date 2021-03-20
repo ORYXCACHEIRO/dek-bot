@@ -116,9 +116,9 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"updeck")){
         if(message.channel.name==nomeCanal){
 
-            const deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
+            if(DeckEncoder.decode(message.content.replace(prefix+"updeck",''))){
 
-            if(deck.length>0){
+                const deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
 
                 users.findOne({
                     iduser: message.author.id
@@ -356,9 +356,11 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+            
+            if(DeckEncoder.decode(message.content.replace(prefix+"deck",''))){
 
-            if(deck.length>0){
+                const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+
                 var printDeck = new Array;
 
                 for(let i = 0;i<deck.length;i++){
