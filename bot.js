@@ -210,7 +210,7 @@ client.on("message", (message) => {
                                 newDeck.save().catch(err => console.log(err));
 
                                 message.channel.send(
-                                    embeded.setTitle("Deck upload successfully")
+                                    embeded.setTitle("Deck uploaded successfully")
                                     .setDescription("You can now see and share your deck with others in the server")
                                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                     .setFooter("If you neeed help use ld!help for more commands")
