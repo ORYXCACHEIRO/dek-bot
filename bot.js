@@ -133,6 +133,7 @@ client.on("message", (message) => {
                                 var det = "["+ i +"] " + data[i].deckName;
                                 info.push(det);
                             }
+                            info.unshift("DECKS:")
 
                             message.channel.send(
                                 embeded.setTitle("Profile " + message.author.username)
