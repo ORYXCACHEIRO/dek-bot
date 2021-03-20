@@ -116,7 +116,7 @@ client.on("message", (message) => {
     else if(msg==prefix+"profile"){
         if(message.channel.name==nomeCanal){
             users.findOne({
-                iduser : message.user.id
+                iduser : message.author.id
             }, (err, data) => {
                 if(err) console.log(err);
                 if(!data){
