@@ -119,7 +119,7 @@ client.on("message", (message) => {
             var deck = "";
 
             try{
-                deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+                deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
 
             } catch(err){
                 if(err.message!=""){
