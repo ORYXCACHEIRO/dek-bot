@@ -116,7 +116,16 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"updeck")){
         if(message.channel.name==nomeCanal){
 
-            const deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
+            var deck = "";
+
+            try{
+                deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+
+            } catch(err){
+                if(err.message!=""){
+                    deck = new Array;
+                }
+            }
 
             if(deck.length>0){
 
