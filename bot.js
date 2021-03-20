@@ -129,7 +129,7 @@ client.on("message", (message) => {
 
             if(deck.length>0){
 
-                var deckName = "";
+                var deckNamee = "";
 
                 for(let i = 0;i<deck.length;i++){
                     
@@ -137,36 +137,44 @@ client.on("message", (message) => {
                         case 1:
                             for(let z = 0;z<client.globals["regions"].length;z++){
                                 if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                    var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                    deckName += result.name;
-                                    break;
+                                    var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    if(result.rarity=="Champion"){
+                                        deckNamee += result.name;
+                                        break;
+                                    }
                                 }
                             }
                         break;
                         case 2:
                             for(let z = 0;z<client.globals["regions"].length;z++){
                                 if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                    var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                    deckName += result.name;
-                                    break;
+                                    var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    if(result.rarity=="Champion"){
+                                        deckNamee += result.name;
+                                        break;
+                                    }
                                 }
                             }
                         break;
                         case 3:
                             for(let z = 0;z<client.globals["regions"].length;z++){
                                 if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                    var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                    deckName += result.name;
-                                    break;
+                                    var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    if(result.rarity=="Champion"){
+                                        deckNamee += result.name;
+                                        break;
+                                    }
                                 }
                             }
                         break;
                         case 4:
                             for(let z = 0;z<client.globals["regions"].length;z++){
                                 if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                    var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                    deckName += result.name;
-                                    break;
+                                    var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    if(result.rarity=="Champion"){
+                                        deckNamee += result.name;
+                                        break;
+                                    }
                                 }
                             }
                         break;
