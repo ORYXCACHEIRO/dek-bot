@@ -295,6 +295,60 @@ client.on("message", (message) => {
         }
     }
 
+    else if(msg.startsWith(prefix+"deletedeck")){
+        if(message.channel.name==nomeCanal){
+
+            var deleteDeckId = message.content.replace(prefix+"deletedeck",'').toLowerCase().substring(1).match(/\d/g);
+            deleteDeckId = deleteDeckId.join("");
+
+            users.findOne({
+                iduser: message.author.id
+            }, (err, data) => {
+                if(err) console.log(err)
+                if(!data){
+                    notRegistered();
+                } else {
+                    deckData.find({
+                     iduser : message.author.id   
+                    }, (err,data) => {
+                        if(err) console.log(err)
+                        if(data.length>0){
+                            var deleteDeckCode = "";
+                            for(let i = 0; i<data.length;i++){
+                                if(i==deleteDeckId){
+                                    deleteDeckCode = data[i].deck;
+                                }
+                            }
+                            deckData.deleteOne({
+                                deck : deleteDeckCode
+                            }, (err, data) => {
+                                if(err) console.log(err)
+                            });
+                        } else {
+                            message.channel.send(
+                                embeded.setTitle("Error deleting deck")
+                                .setDescription("This deck doesn't exist or you dont have any decks created")
+                                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                .setFooter("If you neeed help use ld!help for more commands")
+                                .setTimestamp()
+                            );
+                        }
+                    })
+                }
+            })
+        } else {
+            wrongChannel();
+        }
+    }
+
+    else if(msg.startsWith(prefix+"editedeck")){
+        if(message.channel.name==nomeCanal){
+
+        } else {
+            wrongChannel();
+        }
+    }
+
     else if(msg.startsWith(prefix+"card")){
         if(message.channel.name==nomeCanal){
             var card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
