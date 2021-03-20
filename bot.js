@@ -356,12 +356,12 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+            const deck = "";
 
             var printDeck = new Array;
 
             try{
-                const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+                deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
 
             } catch(err){
                 if(err.message!=""){
