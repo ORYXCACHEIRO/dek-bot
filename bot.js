@@ -113,6 +113,115 @@ client.on("message", (message) => {
         }
     }
 
+    else if(msg.startsWith(prefix+"updeck")){
+        if(message.channel.name==nomeCanal){
+
+            const deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",'').substring(1));
+
+            if(deck.length>0){
+
+                users.findOne({
+                    iduser: message.author.id
+                }, (err, data) => {
+                    if(err) console.log(err);
+                    if(!data){
+                        message.channel.send(
+                            embeded.setTitle("Error uploading deck")
+                            .setDescription("To upload a deck you need to be registered")
+                            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                            .setFooter("If you neeed help use ld!help for more commands")
+                            .setTimestamp()
+                        );
+                    } else {
+                        deckData.find({
+                            iduser : message.author.id
+                        }, (err, data) => {
+                            if(err) console.log(err);
+                            if(data.length+1<=15){
+
+                                var deckName = "";
+
+                                for(let i = 0;i<deck.length;i++){
+                                    
+                                    switch(deck[i].set){
+                                        case 1:
+                                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                                    var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                                    deckName += result.name;
+                                                    break;
+                                                }
+                                            }
+                                        break;
+                                        case 2:
+                                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                                    var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                                    deckName += result.name;
+                                                    break;
+                                                }
+                                            }
+                                        break;
+                                        case 3:
+                                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                                    var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                                    deckName += result.name;
+                                                    break;
+                                                }
+                                            }
+                                        break;
+                                        case 4:
+                                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                                    var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                                    deckName += result.name;
+                                                    break;
+                                                }
+                                            }
+                                        break;
+                                        default: break;
+                                    }
+                                }
+
+                                const newDeck = new deckData({
+                                    deck: message.content.replace(prefix+"updeck",'').substring(1),
+                                    deckName: deckName.split("/"),
+                                    iduser: message.author.id,
+                                });
+
+                                newDeck.save().catch(err => console.log(err));
+
+                                message.channel.send(
+                                    embeded.setTitle("Deck upload successfully")
+                                    .setDescription("You can now see and share your deck with others in the server")
+                                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                    .setFooter("If you neeed help use ld!help for more commands")
+                                    .setTimestamp()
+                                );
+
+                            } else {
+                                message.channel.send(
+                                    embeded.setTitle("Error uploading deck")
+                                    .setDescription("You can't upload more than 15 decks")
+                                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                    .setFooter("If you neeed help use ld!help for more commands")
+                                    .setTimestamp()
+                                );
+                            }
+                        });
+                    }
+                });
+            }
+            else {
+                deckCodeInvalid();
+            }
+            
+        } else {
+            wrongChannel();
+        }
+    }
+
     else if(msg.startsWith(prefix+"card")){
         if(message.channel.name==nomeCanal){
             var card = message.content.replace(prefix+"card","").toLowerCase().substring(1);
@@ -247,67 +356,71 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+            const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",'').substring(1));
 
-            var printDeck = new Array;
+            if(deck.length>0){
+                var printDeck = new Array;
 
-            for(let i = 0;i<deck.length;i++){
-                
-                switch(deck[i].set){
-                    case 1:
-                        for(let z = 0;z<client.globals["regions"].length;z++){
-                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
-                                printDeck.push(info);
-                                break;
+                for(let i = 0;i<deck.length;i++){
+                    
+                    switch(deck[i].set){
+                        case 1:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    let info = result.cost + " | " + result.name + " | " + deck[i].count;
+                                    printDeck.push(info);
+                                    break;
+                                }
                             }
-                        }
-                    break;
-                    case 2:
-                        for(let z = 0;z<client.globals["regions"].length;z++){
-                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
-                                printDeck.push(info);
-                                break;
+                        break;
+                        case 2:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    let info = result.cost + " | " + result.name + " | " + deck[i].count;
+                                    printDeck.push(info);
+                                    break;
+                                }
                             }
-                        }
-                    break;
-                    case 3:
-                        for(let z = 0;z<client.globals["regions"].length;z++){
-                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
-                                printDeck.push(info);
-                                break;
+                        break;
+                        case 3:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    let info = result.cost + " | " + result.name + " | " + deck[i].count;
+                                    printDeck.push(info);
+                                    break;
+                                }
                             }
-                        }
-                    break;
-                    case 4:
-                        for(let z = 0;z<client.globals["regions"].length;z++){
-                            if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
-                                let info = result.cost + " | " + result.name + " | " + deck[i].count;
-                                printDeck.push(info);
-                                break;
+                        break;
+                        case 4:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code)[0];
+                                    let info = result.cost + " | " + result.name + " | " + deck[i].count;
+                                    printDeck.push(info);
+                                    break;
+                                }
                             }
-                        }
-                    break;
-                    default: break;
+                        break;
+                        default: break;
+                    }
                 }
-            }
-
-            printDeck.sort();
-            printDeck.unshift("MANA | CARTA | Nº DE CARTAS");
-
-            message.channel.send(
-                embeded.setTitle("Deck")
-                .setDescription(printDeck)
-                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                .setFooter("If you neeed help use ld!help for more commands")
-                .setTimestamp()
-            );
+    
+                printDeck.sort();
+                printDeck.unshift("MANA | CARTA | Nº DE CARTAS");
+    
+                message.channel.send(
+                    embeded.setTitle("Deck")
+                    .setDescription(printDeck)
+                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                    .setFooter("If you neeed help use ld!help for more commands")
+                    .setTimestamp()
+                );
+            } else {
+                deckCodeInvalid();
+            }  
 
         } else {
             wrongChannel();
@@ -322,6 +435,16 @@ client.on("message", (message) => {
             }
         });
         return idd;
+    }
+
+    function deckCodeInvalid(){
+        message.channel.send(
+            embeded.setTitle("Error uploading deck")
+            .setDescription("The code for the deck is invalid")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
     }
 
     function wrongChannel(){
