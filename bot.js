@@ -203,7 +203,7 @@ client.on("message", (message) => {
 
                                 const newDeck = new deckData({
                                     deck: message.content.replace(prefix+"updeck",''),
-                                    deckName: deckNamee.split(" "),
+                                    deckName: deckNamee.split(" ").toString(),
                                     iduser: message.author.id,
                                 });
 
