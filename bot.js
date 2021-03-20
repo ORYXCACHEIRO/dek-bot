@@ -48,6 +48,21 @@ client.on("message", (message) => {
     const embeded = new discord.MessageEmbed().setColor("#fcc603");
 
     const msg = message.content.toLowerCase();
+
+    if(msg==prefix+"help"){
+        message.channel.send(
+            embeded.setTitle("Bot Help commands")
+            .setDescription(prefix+"setup - setup a channel for you to use the bot\n" + 
+                            prefix+"register - register yourself to upload and share deck code in the server\n"+
+                            prefix+"card + cardname - search a card\n"+
+                            prefix+"deck + deckcode - decode a deck and what cards it contains\n"+
+                            prefix+"profile - see your profile alongside the decks you uploaded\n"+
+                            prefix+"updeck + deckcode - upload a deck to your profile\n")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
+    }
     
     if(msg==prefix+"setupbot"){
 
@@ -133,7 +148,7 @@ client.on("message", (message) => {
                                 var det = "["+ i +"] " + data[i].deckName;
                                 info.push(det);
                             }
-                            info.unshift("DECKS:")
+                            info.unshift("DECKS:")//PASSA A PRIMEIRA POSIÇÃO
 
                             message.channel.send(
                                 embeded.setTitle("Profile " + message.author.username)
