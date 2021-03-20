@@ -112,6 +112,52 @@ client.on("message", (message) => {
             wrongChannel();
         }
     }
+    
+    else if(msg==prefix+"profile"){
+        if(message.channel.name==nomeCanal){
+            users.findOne({
+                iduser : message.user.id
+            }, (err, data) => {
+                if(err) console.log(err);
+                if(!data){
+                    notRegistered();
+                } else {
+                    deckData.find({
+                        iduser: message.author.id
+                    }, (err, data) => {
+                        if(err) console.log(err)
+                        if(data.length>0){
+                            var info = new Array;
+
+                            for(let i = 0;i<data.length;i++){
+                                var det = "["+ i +"] " + data[i].deckName;
+                                info.push(det);
+                            }
+
+                            message.channel.send(
+                                embeded.setTitle("Profile " + message.author.name)
+                                .setDescription(info)
+                                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                .setFooter("If you neeed help use ld!help for more commands")
+                                .setTimestamp()
+                            );
+
+                        } else {
+                            message.channel.send(
+                                embeded.setTitle("Profile " + message.author.name)
+                                .setDescription("You haven't upload any deck yet")
+                                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                .setFooter("If you neeed help use ld!help for more commands")
+                                .setTimestamp()
+                            );
+                        }
+                    });
+                }
+            });
+        } else {
+            wrongChannel();
+        }
+    }
 
     else if(msg.startsWith(prefix+"updeck")){
         if(message.channel.name==nomeCanal){
@@ -187,13 +233,7 @@ client.on("message", (message) => {
                 }, (err, data) => {
                     if(err) console.log(err);
                     if(!data){
-                        message.channel.send(
-                            embeded.setTitle("Error uploading deck")
-                            .setDescription("To upload a deck you need to be registered")
-                            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                            .setFooter("If you neeed help use ld!help for more commands")
-                            .setTimestamp()
-                        );
+                        notRegistered();
                     } else {
                         deckData.find({
                             iduser : message.author.id
@@ -468,6 +508,16 @@ client.on("message", (message) => {
         message.channel.send(
             embeded.setTitle("Error uploading deck")
             .setDescription("The code for the deck is invalid")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
+    }
+
+    function notRegistered(){
+        message.channel.send(
+            embeded.setTitle("Error")
+            .setDescription("To execute this command you need to be registered")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
