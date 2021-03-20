@@ -319,19 +319,18 @@ client.on("message", (message) => {
                                     deleteDeckCode = data[i].deck;
                                 }
                             }
-                            deckData.deleteOne({
-                                deck : deleteDeckCode
-                            }, (err, data) => {
-                                if(err) console.log(err)
-                            });
+                            if(deleteDeckCode!=""){
+                                deckData.deleteOne({
+                                    deck : deleteDeckCode
+                                }, (err, data) => {
+                                    if(err) console.log(err)
+                                });
+                            } else {
+                                errorFindingDeck();
+                            }
+                            
                         } else {
-                            message.channel.send(
-                                embeded.setTitle("Error deleting deck")
-                                .setDescription("This deck doesn't exist or you dont have any decks created")
-                                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                                .setFooter("If you neeed help use ld!help for more commands")
-                                .setTimestamp()
-                            );
+                            errorFindingDeck();
                         }
                     })
                 }
@@ -616,6 +615,16 @@ client.on("message", (message) => {
             );
         }
         
+    }
+
+    function errorFindingDeck(){
+        message.channel.send(
+            embeded.setTitle("Error")
+            .setDescription("This deck doesn't exist or you dont have any decks created")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
     }
 
 });
