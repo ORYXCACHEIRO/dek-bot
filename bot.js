@@ -298,7 +298,7 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deletedeck")){
         if(message.channel.name==nomeCanal){
 
-            var deleteDeckId = message.content.replace(prefix+"deletedeck",'').toLowerCase().substring(1).match(/\d/g);
+            var deleteDeckId = message.content.replace(prefix+"deletedeck",'').match(/\d/g);
             deleteDeckId = deleteDeckId.join("");
 
             users.findOne({
