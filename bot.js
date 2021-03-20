@@ -6,7 +6,16 @@ const fs = require('fs');
 
 const mongoose = require('mongoose');
 
+//BD FILES---------------------------------------
+
+const deckData = require("./BDtables/decks.js");
+const users = require("./BDtables/users.js");
+
+//------------------------------------------------
+
 var client = new discord.Client();
+
+//CARDS AND REGIONS BY SET-------------------------------
 
 client.set1 = require("./cardsets/set1_data/set1.json");
 client.set2 = require("./cardsets/set2_data/set2.json");
@@ -14,8 +23,14 @@ client.set3 = require("./cardsets/set3_data/set3.json");
 client.set4 = require("./cardsets/set4_data/set4.json");
 client.globals = require("./cardsets/core/globals.json");
 
+//---------------------------------------------------------
 
 client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
+
+mongoose.connect("mongodb://dani02:kDBAm1kfBCuPaWcy@lordeckbot-shard-00-00.15kqk.mongodb.net:27017,lordeckbot-shard-00-01.15kqk.mongodb.net:27017,lordeckbot-shard-00-02.15kqk.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-7h7lwb-shard-0&authSource=admin&retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then( console.log("BD is connected"));
 
 client.on("ready", () => {
     console.log("Bot ready and online (and updated as well)");
@@ -67,7 +82,32 @@ client.on("message", (message) => {
 
     else if(msg==prefix+"register"){
         if(message.channel==nomeCanal){
-            //faz coisas
+            users.findOne({
+                iduser: message.author.id
+            }, (err, data) => {
+                if(err) console.log(err);
+                if(!data){
+                    const newUser = new users({
+                        iduser : message.author.id
+                    });
+                    newUser.save().catch(err => console.log(err));
+                    message.channel.send(
+                        embeded.setTitle("User register is complete")
+                        .setDescription("You can now upload and share decks with others")
+                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                        .setFooter("If you neeed help use ld!help for more commands")
+                        .setTimestamp()
+                    );
+                } else {
+                    message.channel.send(
+                        embeded.setTitle("You are already registered")
+                        .setDescription("One cannot register twice with the same account")
+                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                        .setFooter("If you neeed help use ld!help for more commands")
+                        .setTimestamp()
+                    );
+                }
+            });
         } else{
             wrongChannel();
         }
@@ -259,7 +299,7 @@ client.on("message", (message) => {
             }
 
             printDeck.sort();
-            printDeck.unshift("MANA | CARTA | Nº DE CARTAS")
+            printDeck.unshift("MANA | CARTA | Nº DE CARTAS");
 
             message.channel.send(
                 embeded.setTitle("Deck")
