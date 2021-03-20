@@ -4,4 +4,4 @@ const deckSchema = mongoose.Schema({
     iduser: String
 })
 
-module.exports = mongoose.model("users", dataSchema);
+module.exports = mongoose.model("users", deckSchema);
