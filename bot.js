@@ -55,7 +55,7 @@ client.on("message", (message) => {
             .setDescription(prefix+"setup - setup a channel for you to use the bot\n" + 
                             prefix+"register - register yourself to upload and share deck code in the server\n"+
                             prefix+"card + cardname - search a card\n"+
-                            prefix+"deck + deckcode - decode a deck and what cards it contains\n"+
+                            prefix+"deck + deckcode - decode a deck and see what cards it contains\n"+
                             prefix+"profile - see your profile alongside the decks you uploaded\n"+
                             prefix+"updeck + deckcode - upload a deck to your profile\n")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
@@ -145,7 +145,7 @@ client.on("message", (message) => {
                             var info = new Array;
 
                             for(let i = 0;i<data.length;i++){
-                                var det = "["+ i +"] " + data[i].deckName;
+                                var det = "["+ i +"] - " + data[i].deckName;
                                 info.push(det);
                             }
                             info.unshift("DECKS:")//PASSA A PRIMEIRA POSIÇÃO
