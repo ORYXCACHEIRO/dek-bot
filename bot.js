@@ -121,8 +121,8 @@ client.on("message", (message) => {
             try{
                 deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
 
-            } catch(err){
-                if(err.message!=""){
+            } catch(errorr){
+                if(errorr.message!=""){
                     deck = new Array;
                 }
             }
@@ -144,10 +144,9 @@ client.on("message", (message) => {
                     } else {
                         deckData.find({
                             iduser : message.author.id
-                        }, (err, data) => {
-                            if(err) console.log(err);
+                        }, (errr, data) => {
+                            if(errr) console.log(errr);
                             if(data.length+1<=15){
-
                                 var deckName = "";
 
                                 for(let i = 0;i<deck.length;i++){
@@ -199,7 +198,7 @@ client.on("message", (message) => {
                                     iduser: message.author.id,
                                 });
 
-                                newDeck.save().catch(err => console.log(err));
+                                newDeck.save().catch(errrr => console.log(errrr));
 
                                 message.channel.send(
                                     embeded.setTitle("Deck upload successfully")
