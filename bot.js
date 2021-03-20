@@ -356,7 +356,7 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            const deck = "";
+            var deck = "";
 
             var printDeck = new Array;
 
