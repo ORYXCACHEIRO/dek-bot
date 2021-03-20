@@ -88,7 +88,7 @@ client.on("message", (message) => {
                 if(err) console.log(err);
                 if(!data){
                     const newUser = new users({
-                        iduser : message.author.id
+                        iduser : message.author.id,
                     });
                     newUser.save().catch(err => console.log(err));
                     message.channel.send(
