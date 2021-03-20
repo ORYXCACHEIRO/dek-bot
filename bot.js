@@ -364,7 +364,7 @@ client.on("message", (message) => {
                 const deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
 
             } catch(err){
-                if(err!=""){
+                if(err.message!=""){
                     deck = new Array;
                 }
             }
