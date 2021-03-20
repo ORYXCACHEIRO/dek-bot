@@ -129,6 +129,51 @@ client.on("message", (message) => {
 
             if(deck.length>0){
 
+                var deckName = "";
+
+                for(let i = 0;i<deck.length;i++){
+                    
+                    switch(deck[i].set){
+                        case 1:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                    deckName += result.name;
+                                    break;
+                                }
+                            }
+                        break;
+                        case 2:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                    deckName += result.name;
+                                    break;
+                                }
+                            }
+                        break;
+                        case 3:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                    deckName += result.name;
+                                    break;
+                                }
+                            }
+                        break;
+                        case 4:
+                            for(let z = 0;z<client.globals["regions"].length;z++){
+                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
+                                    var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
+                                    deckName += result.name;
+                                    break;
+                                }
+                            }
+                        break;
+                        default: break;
+                    }
+                }
+
                 users.findOne({
                     iduser: message.author.id
                 }, (err, data) => {
@@ -144,61 +189,17 @@ client.on("message", (message) => {
                     } else {
                         deckData.find({
                             iduser : message.author.id
-                        }, (errr, data) => {
-                            if(errr) console.log(errr);
+                        }, (err, data) => {
+                            if(err) console.log(err);
                             if(data.length+1<=15){
-                                var deckName = "";
-
-                                for(let i = 0;i<deck.length;i++){
-                                    
-                                    switch(deck[i].set){
-                                        case 1:
-                                            for(let z = 0;z<client.globals["regions"].length;z++){
-                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                                    var result = client.set1.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                                    deckName += result.name;
-                                                    break;
-                                                }
-                                            }
-                                        break;
-                                        case 2:
-                                            for(let z = 0;z<client.globals["regions"].length;z++){
-                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                                    var result = client.set2.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                                    deckName += result.name;
-                                                    break;
-                                                }
-                                            }
-                                        break;
-                                        case 3:
-                                            for(let z = 0;z<client.globals["regions"].length;z++){
-                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                                    var result = client.set3.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                                    deckName += result.name;
-                                                    break;
-                                                }
-                                            }
-                                        break;
-                                        case 4:
-                                            for(let z = 0;z<client.globals["regions"].length;z++){
-                                                if(client.globals["regions"][z]["abbreviation"]==deck[i].faction.shortCode){
-                                                    var result = client.set4.filter( obj => obj.region === client.globals["regions"][z]["name"] && obj.cardCode==deck[i].code && obj.rarity=="Champion")[0];
-                                                    deckName += result.name;
-                                                    break;
-                                                }
-                                            }
-                                        break;
-                                        default: break;
-                                    }
-                                }
 
                                 const newDeck = new deckData({
                                     deck: message.content.replace(prefix+"updeck",''),
-                                    deckName: deckName.split("/"),
+                                    deckName: deckName.split(" "),
                                     iduser: message.author.id,
                                 });
 
-                                newDeck.save().catch(errrr => console.log(errrr));
+                                newDeck.save().catch(err => console.log(err));
 
                                 message.channel.send(
                                     embeded.setTitle("Deck upload successfully")
