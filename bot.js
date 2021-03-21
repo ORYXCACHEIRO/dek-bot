@@ -373,7 +373,7 @@ client.on("message", (message) => {
                                         deckData.findOneAndUpdate({
                                             deck: data[i].deck,
                                         }, {
-                                            deck: deckName,
+                                            deckName: deckName,
                                         });
                                         message.channel.send(
                                             embeded.setTitle("Deck")
