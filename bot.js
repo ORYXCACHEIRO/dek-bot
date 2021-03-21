@@ -179,20 +179,11 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"updeck")){
         if(message.channel.name==nomeCanal){
 
-            var deck = "";
+            let deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
 
-            try{
-                deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
+            if(deck.length>1){
 
-            } catch(errorr){
-                if(errorr.message!=""){
-                    deck = new Array;
-                }
-            }
-
-            if(deck.length>0){
-
-                var deckNamee = "";
+                let deckNamee = "";
 
                 for(let i = 0;i<deck.length;i++){
                     
@@ -299,7 +290,7 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deletedeck")){
         if(message.channel.name==nomeCanal){
 
-            var deleteDeckId = message.content.replace(prefix+"deletedeck" | /\d/g,'');
+            let deleteDeckId = message.content.replace(prefix+"deletedeck" | /\d/g,'');
             
             users.findOne({
                 iduser: message.author.id
@@ -353,11 +344,52 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deckName")){
         if(message.channel.name==nomeCanal){
-            var deckId = message.content.replace(prefix+"deckName" | /\d/g,'');
-            var deckName = message.content.replace(prefix+"deckName" | /[^a-zA-Z]+/g,'');
+            let deckId = message.content.replace(prefix+"deckName" | /\d/g,'');
+            let deckName = message.content.replace(prefix+"deckName" | /[^a-zA-Z]+/g,'');
 
-            if(deckName!=""){
-
+            if(deckName!="" || deckName.length<50){
+                users.findOne({
+                    iduser : message.author.id
+                }, (err, data) => {
+                    if(err) console.log(err);
+                    if(!data){
+                        notRegistered();
+                    } else {
+                        deckData.find({
+                            iduser: message.author.id
+                        }, (err, data) => {
+                            if(err) console.log(err);
+                            if(data.length>0){
+                                for(let i = 0;i<data.length;i++){
+                                    if(deckId==i){
+                                        deckData.updateOne({
+                                            iduser: message.author.id
+                                        }, (err, data) => {
+                                            if(err) console.log(err);
+                                            const updatedDeck = new deckData({
+                                                deck: data[i].deck,
+                                                deckName: deckName,
+                                                iduser: message.author.id,
+                                            });
+                                            updatedDeck.$set();
+                                            message.channel.send(
+                                                embeded.setTitle("Deck")
+                                                .setDescription("Deck name has been successfully updated to " + deckName)
+                                                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                                .setImage(cardImg)
+                                                .setFooter("If you neeed help use ld!help for more commands")
+                                                .setTimestamp()
+                                            );
+                                            break;
+                                        });
+                                    }
+                                }
+                            } else {
+                                errorFindingDeck();
+                            }
+                        });
+                    }
+                });
             } else {
                 errorFindingDeck();
             }
@@ -535,8 +567,6 @@ client.on("message", (message) => {
         var deck = DeckEncoder.decode(deckCode);;
 
         var printDeck = new Array;
-
-        console.log(deck.length);
 
         if(deck.length>1){
             for(let i = 0;i<deck.length;i++){
