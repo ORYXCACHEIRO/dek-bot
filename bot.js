@@ -621,6 +621,8 @@ client.on("message", (message) => {
             }
         }
 
+        console.log(deck.length);
+
         if(deck.length>0){
 
             for(let i = 0;i<deck.length;i++){
