@@ -579,11 +579,7 @@ client.on("message", (message) => {
             let deck = message.content.replace(prefix+"deck",'').substr(1);
             deck.replace(/\s/g,'');
             
-            try{
-                DeckEncoder.decode(deck);
-            }catch(err){
-                console.log(err.TypeError + "FIXEEEEEEEEEEEEEEE")
-            }
+            
             
             
         } else {
@@ -615,9 +611,17 @@ client.on("message", (message) => {
 
         let printDeck = new Array;
 
-        let deck = DeckEncoder.decode(deckCode);
+        let deck = null;
 
-        if(DeckEncoder.isValidDeck(check)==true){
+        try{
+            deck = DeckEncoder.decode(deckCode);
+        }catch(err){
+            if(err!=""){
+                deck = new Array;
+            }
+        }
+
+        if(deck.length>0){
 
             for(let i = 0;i<deck.length;i++){
             
