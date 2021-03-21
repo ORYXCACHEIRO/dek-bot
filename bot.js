@@ -370,6 +370,7 @@ client.on("message", (message) => {
                                 for(let i = 0;i<data.length;i++){
                                     if(parseInt(deckId)==i){
                                         console.log(i);
+                                        console.log(data[i].deck);
                                         valid = true;
                                         deckData.findOneAndUpdate({
                                             deck: data[i].deck,
