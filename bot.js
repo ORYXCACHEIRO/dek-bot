@@ -350,7 +350,7 @@ client.on("message", (message) => {
             deckNamee = deckNamee.replace(/[^a-zA-Z]+/g,'');
 
             console.log(deckId);
-            console.log(deckName);
+            console.log(deckNamee);
 
             if(deckName!="" && deckName.length<50){
                 users.findOne({
