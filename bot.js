@@ -177,6 +177,41 @@ client.on("message", (message) => {
         }
     }
 
+    else if(msg.startsWith(prefix+"profiledeck")){
+        if(message.channel.name==nomeCanal){
+
+            let deckId = message.content.replace(prefix+"deletedeck" | /\d/g,'');
+
+            users.findOne({
+                iduser : message.author.id
+            }, (err, data) => {
+                if(err) console.log(err);
+                if(!data){
+                    notRegistered();
+                } else {
+                    deckData.find({
+                        iduser: message.author.id
+                    }, (err, data) => {
+                        if(err) console.log(err);
+                        if(data.length>0){
+                            for(let i = 0;i<data.length;i++){
+                                if(i==deckId){      
+                                    getDeck(data[i].deck);
+                                    break;
+                                }
+                            }
+                        } else {
+                            errorFindingDeck();
+                        }
+                    })
+                }
+            });
+
+        } else {
+            wrongChannel();
+        }
+    }
+
     else if(msg.startsWith(prefix+"updeck")){
         if(message.channel.name==nomeCanal){
 
@@ -572,7 +607,7 @@ client.on("message", (message) => {
 
     function getDeck (deckCode){
 
-        var deck = DeckEncoder.decode(deckCode);;
+        var deck = DeckEncoder.decode(deckCode);
 
         var printDeck = new Array;
 
@@ -626,6 +661,7 @@ client.on("message", (message) => {
 
             printDeck.sort();
             printDeck.unshift("`MANA` | `CARTA` | `Nº DE CARTAS`");
+            printDeck.push("\n code: " + deckCode);
 
             message.channel.send(
                 embeded.setTitle("Deck")
