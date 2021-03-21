@@ -372,8 +372,11 @@ client.on("message", (message) => {
                                         valid = true;
                                         deckData.findOneAndUpdate({
                                             deck: data[i].deck,
+                                            iduser: message.author.id,
                                         }, {
-                                            deckName: deckName,
+                                            $set: {
+                                                deckName: deckName
+                                            }
                                         });
                                         message.channel.send(
                                             embeded.setTitle("Deck")
