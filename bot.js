@@ -532,20 +532,7 @@ client.on("message", (message) => {
 
     function getDeck (deckCode){
 
-            var deck = null;
-
-            var printDeck = new Array;
-
-            try{
-                deck = DeckEncoder.decode(deckCode);
-
-            } catch(err){
-                console.log(err)
-                if(err!=""){
-                    deck = new Array;
-                    deck.length = 0;
-                }
-            }
+            var deck = DeckEncoder.decode(deckCode);;
 
             console.log(deck.length);
 
