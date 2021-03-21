@@ -368,11 +368,11 @@ client.on("message", (message) => {
                                 let valid = false;
 
                                 for(let i = 0;i<data.length;i++){
-                                    if(deckId==i){
+                                    if(parseInt(deckId)==i){
+                                        console.log(i);
                                         valid = true;
                                         deckData.findOneAndUpdate({
                                             deck: data[i].deck,
-                                            iduser: message.author.id,
                                         }, {
                                             $set: {
                                                 deckName: deckName
