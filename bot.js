@@ -576,10 +576,10 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            var deck = message.content.replace(prefix+"deck",'');
+            var deck = message.content.replace(prefix+"deck",'').substr(1);
             deck.replace(/\s/g,'');
 
-           console.log(deck);
+           getDeck(deck);
             
         } else {
             wrongChannel();
