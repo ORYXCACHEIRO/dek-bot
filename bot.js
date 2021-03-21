@@ -347,6 +347,9 @@ client.on("message", (message) => {
             let deckId = message.content.replace(prefix+"deckname" | /\d/g,'');
             let deckName = message.content.replace(prefix+"deckname" | /[^a-zA-Z]+/g,'');
 
+            console.log(deckId);
+            console.log(deckName);
+
             if(deckName!="" || deckName.length<50){
                 users.findOne({
                     iduser : message.author.id
