@@ -298,9 +298,8 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deletedeck")){
         if(message.channel.name==nomeCanal){
 
-            var deleteDeckId = message.content.replace(prefix+"deletedeck",'').match(/\d/g);
-            deleteDeckId = deleteDeckId.join("");
-
+            var deleteDeckId = message.content.replace(prefix+"deletedeck" | /\d/g,'');
+            
             users.findOne({
                 iduser: message.author.id
             }, (err, data) => {
@@ -351,7 +350,7 @@ client.on("message", (message) => {
         }
     }
 
-    else if(msg.startsWith(prefix+"editedeck")){
+    else if(msg.startsWith(prefix+"deckName")){
         if(message.channel.name==nomeCanal){
 
         } else {
