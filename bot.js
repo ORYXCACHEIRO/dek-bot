@@ -379,9 +379,9 @@ client.on("message", (message) => {
                                                 .setImage(cardImg)
                                                 .setFooter("If you neeed help use ld!help for more commands")
                                                 .setTimestamp()
-                                            );
-                                            break;
+                                            );  
                                         });
+                                        break;
                                     }
                                 }
                             } else {
