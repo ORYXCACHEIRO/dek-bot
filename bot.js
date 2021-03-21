@@ -576,7 +576,8 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            var deck = message.content.replace(prefix+"deck" | /\s/g,'');
+            var deck = message.content.replace(prefix+"deck",'');
+            deck.replace(/\s/g,'');
 
            console.log(deck);
             
