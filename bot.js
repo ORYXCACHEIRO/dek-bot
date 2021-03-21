@@ -540,10 +540,13 @@ client.on("message", (message) => {
                 deck = DeckEncoder.decode(deckCode);
 
             } catch(err){
-                if(err.message!=""){
+                if(err!=""){
                     deck = new Array;
+                    deck.length = 0;
                 }
             }
+
+            console.log(deck.length);
 
             if(deck.length>0){
                 for(let i = 0;i<deck.length;i++){
