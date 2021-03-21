@@ -365,8 +365,11 @@ client.on("message", (message) => {
                         }, (err, data) => {
                             if(err) console.log(err);
                             if(data.length>0){
+                                let valid = false;
+
                                 for(let i = 0;i<data.length;i++){
                                     if(deckId==i){
+                                        valid = true;
                                         deckData.findOneAndUpdate({
                                             iduser: message.author.id,
                                         }, {
@@ -381,6 +384,9 @@ client.on("message", (message) => {
                                         );  
                                         break;
                                     }
+                                }
+                                if(valid==false){
+                                    errorFindingDeck();
                                 }
                             } else {
                                 errorFindingDeck();
