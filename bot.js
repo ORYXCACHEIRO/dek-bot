@@ -608,6 +608,8 @@ client.on("message", (message) => {
 
     function getDeck (deckCode){
 
+
+
         if(DeckEncoder.isValidDeck(deckCode)==true){
 
             let printDeck = new Array;
