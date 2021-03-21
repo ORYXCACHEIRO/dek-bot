@@ -579,7 +579,12 @@ client.on("message", (message) => {
             let deck = message.content.replace(prefix+"deck",'').substr(1);
             deck.replace(/\s/g,'');
             
-            getDeck(deck);
+            try{
+                DeckEncoder.decode(deck);
+            }catch(err){
+                console.log(err + "FIXEEEEEEEEEEEEEEE")
+            }
+            
             
         } else {
             wrongChannel();
@@ -612,7 +617,7 @@ client.on("message", (message) => {
 
         let deck = DeckEncoder.decode(deckCode);
 
-        if(DeckEncoder.isValidDeck(deck)==true){
+        if(DeckEncoder.isValidDeck(check)==true){
 
             for(let i = 0;i<deck.length;i++){
             
