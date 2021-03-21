@@ -372,11 +372,11 @@ client.on("message", (message) => {
                                         console.log(i);
                                         console.log(data[i].deck);
                                         valid = true;
-                                        deckData.findOneAndUpdate({
-                                            deck: data[i].deck,
+                                        await deckData.findOneAndUpdate({
+                                            deck: data[i].deck
                                         }, {
                                             $set: {
-                                                deckName: deckNamee,
+                                                deckName: deckNamee
                                             }
                                         });
                                         message.channel.send(
