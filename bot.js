@@ -342,10 +342,10 @@ client.on("message", (message) => {
         }
     }
 
-    else if(msg.startsWith(prefix+"deckName")){
+    else if(msg.startsWith(prefix+"deckname")){
         if(message.channel.name==nomeCanal){
-            let deckId = message.content.replace(prefix+"deckName" | /\d/g,'');
-            let deckName = message.content.replace(prefix+"deckName" | /[^a-zA-Z]+/g,'');
+            let deckId = message.content.replace(prefix+"deckname" | /\d/g,'');
+            let deckName = message.content.replace(prefix+"deckname" | /[^a-zA-Z]+/g,'');
 
             if(deckName!="" || deckName.length<50){
                 users.findOne({
@@ -376,7 +376,6 @@ client.on("message", (message) => {
                                                 embeded.setTitle("Deck")
                                                 .setDescription("Deck name has been successfully updated to " + deckName)
                                                 .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                                                .setImage(cardImg)
                                                 .setFooter("If you neeed help use ld!help for more commands")
                                                 .setTimestamp()
                                             );  
