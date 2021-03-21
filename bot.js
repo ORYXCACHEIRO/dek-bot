@@ -363,11 +363,9 @@ client.on("message", (message) => {
                                 for(let i = 0;i<data.length;i++){
                                     if(deckId==i){
                                         deckData.findOneAndUpdate({
-                                            iduser: message.author.id
-                                        }, (err, data) => {
-                                            if(err) console.log(err);
-                                            deck: deckName
-                                            
+                                            iduser: message.author.id,
+                                        }, {
+                                            deck: deckName,
                                         });
                                         message.channel.send(
                                             embeded.setTitle("Deck")
