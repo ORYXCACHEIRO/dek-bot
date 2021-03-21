@@ -378,6 +378,8 @@ client.on("message", (message) => {
                                             $set: {
                                                 deckName: deckNamee
                                             }
+                                        }, {
+                                            new: true
                                         });
                                         message.channel.send(
                                             embeded.setTitle("Deck")
