@@ -180,7 +180,7 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"profiledeck")){
         if(message.channel.name==nomeCanal){
 
-            let deckId = message.content.replace(prefix+"deletedeck" | /\d/g,'');
+            let deckId = message.content.replace(prefix+"profiledeck" | /\d/g,'');
 
             users.findOne({
                 iduser : message.author.id
