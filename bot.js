@@ -345,9 +345,9 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deckname")){
         if(message.channel.name==nomeCanal){
             let deckId = message.content.replace(prefix+"deckname",'');
-            let deckName = message.content.replace(prefix+"deckname",'');
+            let deckNamee = message.content.replace(prefix+"deckname",'');
             deckId = deckId.replace(/[^0-9]/g, '');
-            deckName = deckName.replace(/[^a-zA-Z]+/g,'');
+            deckNamee = deckNamee.replace(/[^a-zA-Z]+/g,'');
 
             console.log(deckId);
             console.log(deckName);
@@ -376,7 +376,7 @@ client.on("message", (message) => {
                                             deck: data[i].deck,
                                         }, {
                                             $set: {
-                                                deckName: deckName
+                                                deckName: deckNamee,
                                             }
                                         });
                                         message.channel.send(
