@@ -542,6 +542,7 @@ client.on("message", (message) => {
             } catch(err){
                 if(err.message!=""){
                     deck = new Array;
+                    deck.length = 0;
                 }
             }
 
