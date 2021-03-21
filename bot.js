@@ -609,13 +609,11 @@ client.on("message", (message) => {
 
     function getDeck (deckCode){
 
+        let printDeck = new Array;
 
+        let deck = DeckEncoder.decode(deckCode);
 
-        if(DeckEncoder.isValidDeck(deckCode)==true){
-
-            let printDeck = new Array;
-
-            let deck = DeckEncoder.decode(deckCode);
+        if(DeckEncoder.isValidDeck(deck)==true){
 
             for(let i = 0;i<deck.length;i++){
             
