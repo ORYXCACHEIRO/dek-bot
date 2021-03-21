@@ -372,15 +372,10 @@ client.on("message", (message) => {
                                         console.log(i);
                                         console.log(data[i].deck);
                                         valid = true;
-                                        deckData.findOneAndUpdate({
-                                            deck: data[i].deck
-                                        }, {
-                                            $set: {
-                                                deckName: deckNamee
-                                            }
-                                        }, {
-                                            new: true
-                                        });
+                                        let docData = deckData.findOne({deck: data[i].deck});
+                                        docData.deckName = deckNamee;
+                                        docData.save();
+
                                         message.channel.send(
                                             embeded.setTitle("Deck")
                                             .setDescription("Deck name has been successfully updated to " + deckNamee)
