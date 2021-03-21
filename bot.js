@@ -57,7 +57,8 @@ client.on("message", (message) => {
                             prefix+"card + cardname - search a card\n"+
                             prefix+"deck + deckcode - decode a deck and see what cards it contains\n"+
                             prefix+"profile - see your profile alongside the decks you uploaded\n"+
-                            prefix+"updeck + deckcode - upload a deck to your profile\n")
+                            prefix+"updeck + deckcode - upload a deck to your profile\n"+
+                            prefix+"deletedeck + iddeck - delete one of your decks")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -148,7 +149,7 @@ client.on("message", (message) => {
                                 var det = "["+ i +"] - " + data[i].deckName;
                                 info.push(det);
                             }
-                            info.unshift("DECKS:")//PASSA A PRIMEIRA POSIÇÃO
+                            info.unshift("DECK ID | DECK NAME")//PASSA A PRIMEIRA POSIÇÃO
 
                             message.channel.send(
                                 embeded.setTitle("Profile " + message.author.username)
@@ -630,7 +631,7 @@ client.on("message", (message) => {
     function errorFindingDeck(){
         message.channel.send(
              embeded.setTitle("Error")
-            .setDescription("This deck doesn't exist or you dont have any decks created")
+            .setDescription("This deck isn't valid or you dont have any decks created")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
