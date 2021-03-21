@@ -381,7 +381,7 @@ client.on("message", (message) => {
                                         });
                                         message.channel.send(
                                             embeded.setTitle("Deck")
-                                            .setDescription("Deck name has been successfully updated to " + deckName)
+                                            .setDescription("Deck name has been successfully updated to " + deckNamee)
                                             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                             .setFooter("If you neeed help use ld!help for more commands")
                                             .setTimestamp()
