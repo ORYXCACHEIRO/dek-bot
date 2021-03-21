@@ -371,7 +371,7 @@ client.on("message", (message) => {
                                     if(deckId==i){
                                         valid = true;
                                         deckData.findOneAndUpdate({
-                                            iduser: message.author.id,
+                                            deck: data[i].deck
                                         }, {
                                             deck: deckName,
                                         });
