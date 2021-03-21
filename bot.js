@@ -353,6 +353,14 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deckName")){
         if(message.channel.name==nomeCanal){
+            var deckId = message.content.replace(prefix+"deckName" | /\d/g,'');
+            var deckName = message.content.replace(prefix+"deckName" | /[^a-zA-Z]+/g,'');
+
+            if(deckName!=""){
+
+            } else {
+                errorFindingDeck();
+            }
 
         } else {
             wrongChannel();
@@ -493,12 +501,43 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
+            var deck = message.content.replace(prefix+"deck",'');
+
+            getDeck(deck);
+            
+        } else {
+            wrongChannel();
+        }  
+    }
+
+    function lorDeckChannelId(){
+        let idd = 0; 
+        message.guild.channels.cache.find((channel) => { 
+            if(channel.name === nomeCanal){
+                idd = channel.id;    
+            }
+        });
+        return idd;
+    }
+
+    function deckCodeInvalid(){
+        message.channel.send(
+            embeded.setTitle("Error uploading deck")
+            .setDescription("The code for the deck is invalid")
+            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+            .setFooter("If you neeed help use ld!help for more commands")
+            .setTimestamp()
+        );
+    }
+
+    function getDeck (deckCode){
+
             var deck = "";
 
             var printDeck = new Array;
 
             try{
-                deck = DeckEncoder.decode(message.content.replace(prefix+"deck",''));
+                deck = DeckEncoder.decode(deckCode);
 
             } catch(err){
                 if(err.message!=""){
@@ -568,30 +607,6 @@ client.on("message", (message) => {
             else {
                 deckCodeInvalid();
             }
-            
-        } else {
-            wrongChannel();
-        }  
-    }
-
-    function lorDeckChannelId(){
-        let idd = 0; 
-        message.guild.channels.cache.find((channel) => { 
-            if(channel.name === nomeCanal){
-                idd = channel.id;    
-            }
-        });
-        return idd;
-    }
-
-    function deckCodeInvalid(){
-        message.channel.send(
-            embeded.setTitle("Error uploading deck")
-            .setDescription("The code for the deck is invalid")
-            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-            .setFooter("If you neeed help use ld!help for more commands")
-            .setTimestamp()
-        );
     }
 
     function notRegistered(){
