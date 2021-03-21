@@ -372,17 +372,19 @@ client.on("message", (message) => {
                                         console.log(i);
                                         console.log(data[i].deck);
                                         valid = true;
-                                        let docData = deckData.findOne({deck: data[i].deck});
-                                        docData.deckName = deckNamee;
-                                        docData.save();
-
-                                        message.channel.send(
+                                        deckData.updateOne({
+                                            deck: data[i].deck
+                                        }, {
+                                            deckName: deckNamee
+                                        }).then(
+                                            message.channel.send(
                                             embeded.setTitle("Deck")
                                             .setDescription("Deck name has been successfully updated to " + deckNamee)
                                             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                             .setFooter("If you neeed help use ld!help for more commands")
                                             .setTimestamp()
-                                        );  
+                                            )
+                                        );
                                         break;
                                     }
                                 }
