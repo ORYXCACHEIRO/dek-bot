@@ -52,13 +52,14 @@ client.on("message", (message) => {
     if(msg==prefix+"help"){
         message.channel.send(
             embeded.setTitle("Bot Help commands")
-            .setDescription(prefix+"setup - setup a channel for you to use the bot\n" + 
-                            prefix+"register - register yourself to upload and share deck code in the server\n"+
-                            prefix+"card + cardname - search a card\n"+
-                            prefix+"deck + deckcode - decode a deck and see what cards it contains\n"+
-                            prefix+"profile - see your profile alongside the decks you uploaded\n"+
-                            prefix+"updeck + deckcode - upload a deck to your profile\n"+
-                            prefix+"deletedeck + iddeck - delete one of your decks")
+            .setDescription(prefix+"`setup` - setup a channel for you to use the bot\n" + 
+                            prefix+"`register` - register yourself to upload and share deck code in the server\n"+
+                            prefix+"`card` + `cardname` - search a card\n"+
+                            prefix+"`deck` + `deckcode` - decode a deck and see what cards it contains\n"+
+                            prefix+"`profile` - see your profile alongside the decks you uploaded\n"+
+                            prefix+"`updeck` + `deckcode` - upload a deck to your profile\n"+
+                            prefix+"`deletedeck` + `iddeck` - delete one of your decks\n"+
+                            prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -108,7 +109,7 @@ client.on("message", (message) => {
                     });
                     newUser.save().catch(err => console.log(err));
                     message.channel.send(
-                        embeded.setTitle("User register is complete")
+                        embeded.setTitle("User register is `complete`")
                         .setDescription("You can now upload and share decks with others")
                         .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                         .setFooter("If you neeed help use ld!help for more commands")
@@ -116,7 +117,7 @@ client.on("message", (message) => {
                     );
                 } else {
                     message.channel.send(
-                        embeded.setTitle("You are already registered")
+                        embeded.setTitle("You are already `registered`")
                         .setDescription("One cannot register twice with the same account")
                         .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                         .setFooter("If you neeed help use ld!help for more commands")
@@ -149,10 +150,10 @@ client.on("message", (message) => {
                                 var det = "["+ i +"] - " + data[i].deckName;
                                 info.push(det);
                             }
-                            info.unshift("DECK ID | DECK NAME")//PASSA A PRIMEIRA POSIÇÃO
+                            info.unshift("`DECK ID` | `DECK NAME`")//PASSA A PRIMEIRA POSIÇÃO
 
                             message.channel.send(
-                                embeded.setTitle("Profile " + message.author.username)
+                                embeded.setTitle("`Profile` " + message.author.username)
                                 .setDescription(info)
                                 .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                 .setFooter("If you neeed help use ld!help for more commands")
@@ -161,7 +162,7 @@ client.on("message", (message) => {
 
                         } else {
                             message.channel.send(
-                                embeded.setTitle("Profile " + message.author.username)
+                                embeded.setTitle("`Profile` " + message.author.username)
                                 .setDescription("You haven't upload any deck yet")
                                 .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                 .setFooter("If you neeed help use ld!help for more commands")
@@ -258,7 +259,7 @@ client.on("message", (message) => {
                                 newDeck.save().catch(err => console.log(err));
 
                                 message.channel.send(
-                                    embeded.setTitle("Deck uploaded successfully")
+                                    embeded.setTitle("Deck uploaded `successfully`")
                                     .setDescription("You can now see and share your deck with others in the server")
                                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                     .setFooter("If you neeed help use ld!help for more commands")
@@ -267,7 +268,7 @@ client.on("message", (message) => {
 
                             } else {
                                 message.channel.send(
-                                    embeded.setTitle("Error uploading deck")
+                                    embeded.setTitle("`Error` uploading deck")
                                     .setDescription("You can't upload more than 15 decks")
                                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                     .setFooter("If you neeed help use ld!help for more commands")
@@ -319,7 +320,7 @@ client.on("message", (message) => {
                                     } else {
                                         message.channel.send(
                                             embeded.setTitle("Deck")
-                                            .setDescription("Your deck has been successfully deleted")
+                                            .setDescription("Your deck has been `successfully deleted`")
                                             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                             .setImage(cardImg)
                                             .setFooter("If you neeed help use ld!help for more commands")
@@ -379,7 +380,7 @@ client.on("message", (message) => {
                                         }).then(
                                             message.channel.send(
                                             embeded.setTitle("Deck")
-                                            .setDescription("Deck name has been successfully updated to " + deckNamee)
+                                            .setDescription("Deck name has been `successfully updated` to " + deckNamee)
                                             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                                             .setFooter("If you neeed help use ld!help for more commands")
                                             .setTimestamp()
@@ -503,7 +504,7 @@ client.on("message", (message) => {
                 );
                 if(cardChampLvl1Img!=""){
                     message.channel.send(
-                        embeded.setTitle(cardName + " Level Up")
+                        embeded.setTitle(cardName + " `Level Up`")
                         .setDescription("")
                         .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                         .setImage(cardChampLvl1Img)
@@ -513,7 +514,7 @@ client.on("message", (message) => {
                 }
                 if(cardChampLvl2Img!=""){
                     message.channel.send(
-                        embeded.setTitle(cardName + " Level GROSSO")
+                        embeded.setTitle(cardName + " `Level GROSSO`")
                         .setDescription("")
                         .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                         .setImage(cardChampLvl2Img)
@@ -525,7 +526,7 @@ client.on("message", (message) => {
             } else {
                 message.channel.send(
                     embeded.setTitle("Error")
-                    .setDescription("The card you tried to search doesn't exist")
+                    .setDescription("The card you tried to search `doesn't exist`")
                     .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
                     .setFooter("If you neeed help use ld!help for more commands")
                     .setTimestamp()
@@ -540,7 +541,7 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            var deck = message.content.replace(prefix+"deck",'');
+            var deck = message.content.replace(prefix+"deck" | /\s/g,'');
 
             getDeck(deck);
             
@@ -562,7 +563,7 @@ client.on("message", (message) => {
     function deckCodeInvalid(){
         message.channel.send(
             embeded.setTitle("Error uploading deck")
-            .setDescription("The code for the deck is invalid")
+            .setDescription("The code for the deck is `invalid`")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -624,7 +625,7 @@ client.on("message", (message) => {
             }
 
             printDeck.sort();
-            printDeck.unshift("MANA | CARTA | Nº DE CARTAS");
+            printDeck.unshift("`MANA` | `CARTA` | `Nº DE CARTAS`");
 
             message.channel.send(
                 embeded.setTitle("Deck")
@@ -642,7 +643,7 @@ client.on("message", (message) => {
     function notRegistered(){
         message.channel.send(
             embeded.setTitle("Error")
-            .setDescription("To execute this command you need to be registered")
+            .setDescription("To execute this command you need to be `registered`")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -676,7 +677,7 @@ client.on("message", (message) => {
     function errorFindingDeck(){
         message.channel.send(
              embeded.setTitle("Error")
-            .setDescription("This deck isn't valid or you dont have any decks created")
+            .setDescription("This deck `isn't valid` or you `dont have any decks created`")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
