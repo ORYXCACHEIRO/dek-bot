@@ -623,7 +623,7 @@ client.on("message", (message) => {
 
         console.log(deck.length);
 
-        if(deck.length>0){
+        if(deck.length>3){
 
             for(let i = 0;i<deck.length;i++){
             
