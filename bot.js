@@ -59,7 +59,8 @@ client.on("message", (message) => {
                             prefix+"`profile` - see your profile alongside the decks you uploaded\n"+
                             prefix+"`updeck` + `deckcode` - upload a deck to your profile\n"+
                             prefix+"`deletedeck` + `iddeck` - delete one of your decks\n"+
-                            prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks")
+                            prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks"+
+                            prefix+"`profiledeck` + `iddeck` - see one of your decks")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
