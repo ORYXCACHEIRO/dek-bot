@@ -362,24 +362,20 @@ client.on("message", (message) => {
                             if(data.length>0){
                                 for(let i = 0;i<data.length;i++){
                                     if(deckId==i){
-                                        deckData.updateOne({
+                                        deckData.findOneAndUpdate({
                                             iduser: message.author.id
                                         }, (err, data) => {
                                             if(err) console.log(err);
-                                            const updatedDeck = new deckData({
-                                                deck: data[i].deck,
-                                                deckName: deckName,
-                                                iduser: message.author.id,
-                                            });
-                                            updatedDeck.$set();
-                                            message.channel.send(
-                                                embeded.setTitle("Deck")
-                                                .setDescription("Deck name has been successfully updated to " + deckName)
-                                                .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                                                .setFooter("If you neeed help use ld!help for more commands")
-                                                .setTimestamp()
-                                            );  
+                                            deck: deckName
+                                            
                                         });
+                                        message.channel.send(
+                                            embeded.setTitle("Deck")
+                                            .setDescription("Deck name has been successfully updated to " + deckName)
+                                            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                            .setFooter("If you neeed help use ld!help for more commands")
+                                            .setTimestamp()
+                                        );  
                                         break;
                                     }
                                 }
