@@ -532,7 +532,7 @@ client.on("message", (message) => {
 
     function getDeck (deckCode){
 
-            var deck = "";
+            var deck = null;
 
             var printDeck = new Array;
 
@@ -542,7 +542,6 @@ client.on("message", (message) => {
             } catch(err){
                 if(err.message!=""){
                     deck = new Array;
-                    deck.length = 0;
                 }
             }
 
