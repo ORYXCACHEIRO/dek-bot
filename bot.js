@@ -582,7 +582,7 @@ client.on("message", (message) => {
             try{
                 DeckEncoder.decode(deck);
             }catch(err){
-                console.log(err + "FIXEEEEEEEEEEEEEEE")
+                console.log(err.TypeError + "FIXEEEEEEEEEEEEEEE")
             }
             
             
