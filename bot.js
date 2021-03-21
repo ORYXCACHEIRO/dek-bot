@@ -579,7 +579,7 @@ client.on("message", (message) => {
             let deck = message.content.replace(prefix+"deck",'').substr(1);
             deck.replace(/\s/g,'');
             
-            
+            getDeck(deck);
             
             
         } else {
@@ -621,7 +621,7 @@ client.on("message", (message) => {
             }
         }
 
-        if(deck.length>0){
+        if(deck.length>1){
 
             for(let i = 0;i<deck.length;i++){
             
