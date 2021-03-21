@@ -346,7 +346,7 @@ client.on("message", (message) => {
         if(message.channel.name==nomeCanal){
             let deckId = message.content.replace(prefix+"deckname",'');
             let deckName = message.content.replace(prefix+"deckname",'');
-            deckId = deckId.match(/\d+/);
+            deckId = deckId.replace(/[^0-9]/g, '');
             deckName = deckName.replace(/[^a-zA-Z]+/g,'');
 
             console.log(deckId);
