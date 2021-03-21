@@ -608,11 +608,12 @@ client.on("message", (message) => {
 
     function getDeck (deckCode){
 
-        var deck = DeckEncoder.decode(deckCode);
+        if(DeckEncoder.isValidDeck(deckCode)==true){
 
-        var printDeck = new Array;
+            let printDeck = new Array;
 
-        if(deck.length>1){
+            let deck = DeckEncoder.decode(deckCode);
+
             for(let i = 0;i<deck.length;i++){
             
                 switch(deck[i].set){
