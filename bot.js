@@ -579,8 +579,7 @@ client.on("message", (message) => {
             let deck = message.content.replace(prefix+"deck",'').substr(1);
             deck.replace(/\s/g,'');
             
-
-           console.log(deck);
+            getDeck(deck);
             
         } else {
             wrongChannel();
