@@ -344,13 +344,13 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deckname")){
         if(message.channel.name==nomeCanal){
-            let deckId = message.content.replace(prefix+"deckname" | /\d/g,'');
-            let deckName = message.content.replace(prefix+"deckname" | /[^a-zA-Z]+/g,'');
+            let deckId = message.content.replace(prefix+"deckname" + /\d/g,'');
+            let deckName = message.content.replace(prefix+"deckname" + /[^a-zA-Z]+/g,'');
 
             console.log(deckId);
             console.log(deckName);
 
-            if(deckName!="" || deckName.length<50){
+            if(deckName!="" && deckName.length<50){
                 users.findOne({
                     iduser : message.author.id
                 }, (err, data) => {
