@@ -534,6 +534,8 @@ client.on("message", (message) => {
 
             var deck = DeckEncoder.decode(deckCode);;
 
+            var printDeck = new Array;
+
             console.log(deck.length);
 
             if(deck.length>0){
