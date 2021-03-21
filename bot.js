@@ -352,7 +352,7 @@ client.on("message", (message) => {
             console.log(deckId);
             console.log(deckNamee);
 
-            if(deckName!="" && deckName.length<50){
+            if(deckNamee!="" && deckNamee.length<50){
                 users.findOne({
                     iduser : message.author.id
                 }, (err, data) => {
