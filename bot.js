@@ -593,20 +593,22 @@ client.on("message", (message) => {
                         default: break;
                     }
                 }
-    
-                printDeck.sort();
-                printDeck.unshift("MANA | CARTA | Nº DE CARTAS");
-    
-                message.channel.send(
-                    embeded.setTitle("Deck")
-                    .setDescription(printDeck)
-                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
-                    .setFooter("If you neeed help use ld!help for more commands")
-                    .setTimestamp()
-                );
-            }
-            else {
-                deckCodeInvalid();
+
+                if(printDeck.length==0){
+                    deckCodeInvalid();
+                } else {
+                    printDeck.sort();
+                    printDeck.unshift("MANA | CARTA | Nº DE CARTAS");
+        
+                    message.channel.send(
+                        embeded.setTitle("Deck")
+                        .setDescription(printDeck)
+                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                        .setFooter("If you neeed help use ld!help for more commands")
+                        .setTimestamp()
+                    );
+                }
+                
             }
     }
 
