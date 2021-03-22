@@ -267,8 +267,9 @@ client.on("message", (message) => {
             let userName = message.content.replace(prefix+"shprofile",'');
             userName = userName.replace(/[^a-zA-Z]+/g,'');
 
-            let userId = client.users.cache.find(u => u.username ==userName).id;
+            let userId = client.users.cache.find(u => u.username == userName).id;
 
+            console.log(userName);
             console.log(userId);
 
         } else {
