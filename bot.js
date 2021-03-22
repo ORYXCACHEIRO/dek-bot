@@ -274,8 +274,6 @@ client.on("message", (message) => {
             } else {
                 console.log(userId);
             }
-
-            console.log(userName);
             
 
         } else {
