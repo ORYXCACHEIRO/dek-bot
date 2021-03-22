@@ -278,7 +278,6 @@ client.on("message", (message) => {
 
             if(typeof user ==="undefined"){
                 errorFindingUser();
-                console.log("noice")
             } else {
                 users.findOne({
                     iduser : user.id
@@ -325,9 +324,10 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"shprofile")){
         if(message.channel.name==nomeCanal){
             let userName = message.content.replace(prefix+"shprofile",'');
-            userName = userName.replace(/\d+/g,'').substring(1);
+            userName = userName.replace(/\d+/g,'');
+            userName = userName.replace(/\s/g,'');
 
-            let userId = client.users.cache.find(u => u.username == userName);
+            let userId = client.users.cache.find(u => u.username.replace(/\s/g,'') == userName);
 
             if(typeof userId ==="undefined"){
                 errorFindingUser();
@@ -385,8 +385,11 @@ client.on("message", (message) => {
 
             let deck = null;
 
+            let deckCodeee = message.content.replace(prefix+"updeck",'');
+            deckCodeee.replace(/\s/g,'');
+
             try{
-                deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",'').substring(1));
+                deck = DeckEncoder.decode(deckCodeee);
             }catch(err){
                 if(err!=""){
                     deck = new Array;
@@ -753,7 +756,7 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"deck")){
         if(message.channel.name==nomeCanal){
-            let deck = message.content.replace(prefix+"deck",'').substr(1);
+            let deck = message.content.replace(prefix+"deck",'');
             deck.replace(/\s/g,'');
             
             getDeck(deck);
@@ -797,8 +800,6 @@ client.on("message", (message) => {
                 deck = new Array;
             }
         }
-
-        console.log(deck.length);
 
         if(deck.length>3){
 
