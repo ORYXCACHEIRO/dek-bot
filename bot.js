@@ -265,13 +265,13 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"shprofile")){
         if(message.channel.name==nomeCanal){
             let userName = message.content.replace(prefix+"shprofile",'');
-            userName = userName.replace(/\d+/g,'');
+            userName = userName.replace(/\d+/g,'').substring(1);
 
-            //let userId = client.users.cache.find(u => u.username == userName).id;
+            let userId = client.users.cache.find(u => u.username == userName).id;
 
 
             console.log(userName);
-            //console.log(userId);
+            console.log(userId);
 
         } else {
             wrongChannel();
