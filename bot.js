@@ -267,11 +267,12 @@ client.on("message", (message) => {
             let userName = message.content.replace(prefix+"shprofile",'');
             userName = userName.replace(/\d+/g,'').substring(1);
 
-            let userId = client.users.cache.find(u => u.username == "Dani-_-");
+            let userId = client.users.cache.find(u => u.username == userName);
 
             if(typeof userId ==="undefined"){
-                console.log(userId + "gayyyy");
+                errorFindingUser();
             } else {
+                userId = userId.id;
                 console.log(userId);
             }
             
@@ -809,6 +810,16 @@ client.on("message", (message) => {
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
         );
+    }
+
+    function errorFindingUser(){
+        message.channel.send(
+            embeded.setTitle("Error")
+           .setDescription("This user `isn't valid` or `doesn't exist`")
+           .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+           .setFooter("If you neeed help use ld!help for more commands")
+           .setTimestamp()
+       );
     }
 
 });
