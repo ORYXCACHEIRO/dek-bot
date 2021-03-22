@@ -264,8 +264,8 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"seedeck")){
         if(message.channel.name==nomeCanal){
-            let userName = message.content.replace(prefix+"seedeck",'');
-            userName = userName.replace(/\d+/g,'').substring(1);
+            let userName = message.content.replace(prefix+"seedeck",'').substring(1);;
+            userName = userName.replace(/\d+/g,'');
 
             let deckId = message.content.replace(prefix+"seedeck",'');
             deckId = deckId.replace(/[^0-9]/g,'');
@@ -384,7 +384,7 @@ client.on("message", (message) => {
             let deck = null;
 
             try{
-                deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",'').substr(1));
+                deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",'').substring(1));
             }catch(err){
                 if(err!=""){
                     deck = new Array;
