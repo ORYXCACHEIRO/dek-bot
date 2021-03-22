@@ -227,8 +227,6 @@ client.on("message", (message) => {
             let deckId = message.content.replace(prefix+"profiledeck",'');
             deckId.replace(/\d/g,'');
 
-            console.log(deckId);
-
             users.findOne({
                 iduser : message.author.id
             }, (err, data) => {
@@ -270,7 +268,7 @@ client.on("message", (message) => {
             userName = userName.replace(/\d+/g,'').substring(1);
 
             let deckId = message.content.replace(prefix+"seedeck",'');
-            deckId = deckId.replace(/\d/g,'');
+            deckId = deckId.replace(/[^0-9]/g,'');
 
             let userId = client.users.cache.find(u => u.username == userName);
 
