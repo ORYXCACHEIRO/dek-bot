@@ -278,6 +278,7 @@ client.on("message", (message) => {
 
             console.log(deckId);
             console.log(userName);
+            console.log(userId);
 
             if(typeof userId ==="undefined"){
                 errorFindingUser();
