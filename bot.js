@@ -271,7 +271,7 @@ client.on("message", (message) => {
 
 
             console.log(userName);
-            console.log(userId);
+            //console.log(userId);
 
         } else {
             wrongChannel();
