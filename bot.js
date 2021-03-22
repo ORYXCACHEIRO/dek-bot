@@ -198,11 +198,16 @@ client.on("message", (message) => {
                     }, (err, data) => {
                         if(err) console.log(err);
                         if(data.length>0){
+                            let found = false;
                             for(let i = 0;i<data.length;i++){
                                 if(i==deckId){      
+                                    found = true;
                                     getDeck(data[i].deck);
                                     break;
                                 }
+                            }
+                            if(found==false){
+                                errorFindingDeck();
                             }
                         } else {
                             errorFindingDeck();
