@@ -265,7 +265,7 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"shprofile")){
         if(message.channel.name==nomeCanal){
             let userName = message.content.replace(prefix+"shprofile",'');
-            userName = userName.replace(/[^a-zA-Z]+/g,'');
+            userName = userName.replace(/\d+/g,'');
 
             //let userId = client.users.cache.find(u => u.username == userName).id;
 
