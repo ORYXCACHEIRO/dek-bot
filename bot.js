@@ -274,25 +274,21 @@ client.on("message", (message) => {
             deckId = deckId.replace(/[^0-9]/g,'');
             // /[^0-9]/g regex for getting only numbers from string
 
-            let userId = client.users.cache.find(u => u.username.replace(/\s/g,'') == userName);
-
-            console.log(deckId);
-            console.log(userName);
-            console.log(userId);
+            let user = client.users.cache.find(u => u.username.replace(/\s/g,'') == userName);
 
             if(typeof userId ==="undefined"){
                 errorFindingUser();
                 console.log("noice")
             } else {
                 users.findOne({
-                    iduser : userId
+                    iduser : user.id
                 }, (err, data) => {
                     if(err) console.log(err);
                     if(!data){
                         errorFindingUser();
                     } else {
                         deckData.find({
-                            iduser : userId
+                            iduser : user.id
                         }, (err,data) => {
                             if(err) console.log(err);
                             if(data.length>0){
