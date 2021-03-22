@@ -276,7 +276,7 @@ client.on("message", (message) => {
 
             let user = client.users.cache.find(u => u.username.replace(/\s/g,'') == userName);
 
-            if(typeof userId ==="undefined"){
+            if(typeof user ==="undefined"){
                 errorFindingUser();
                 console.log("noice")
             } else {
