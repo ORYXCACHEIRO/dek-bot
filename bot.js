@@ -269,7 +269,7 @@ client.on("message", (message) => {
 
             let userId = client.users.cache.find(u => u.username == "Dani-_-");
 
-            if(userId=="undefined"){
+            if(typeof userId ==="undefined"){
                 console.log(userId + "gayyyy");
             } else {
                 console.log(userId);
