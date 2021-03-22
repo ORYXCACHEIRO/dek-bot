@@ -265,7 +265,9 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"seedeck")){
         if(message.channel.name==nomeCanal){
             let userName = message.content.replace(prefix+"seedeck",'');
+            userName = userName.replace(/\d+/g,'');
             userName = userName.replace(/\s/g,'');
+            // /\d+/g regex for getting only characters
             // /\s/g regex for removing spaces
 
             let deckId = message.content.replace(prefix+"seedeck",'');
