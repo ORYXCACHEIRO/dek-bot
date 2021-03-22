@@ -181,7 +181,8 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"profiledeck")){
         if(message.channel.name==nomeCanal){
 
-            let deckId = message.content.replace(prefix+"profiledeck" | /\d/g,'');
+            let deckId = message.content.replace(prefix+"profiledeck",'');
+            deckId.replace(/\d/g,'');
 
             console.log(deckId);
 
