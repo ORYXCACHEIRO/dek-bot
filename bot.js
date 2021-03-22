@@ -62,7 +62,8 @@ client.on("message", (message) => {
                             prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks\n"+
                             prefix+"`profiledeck` + `iddeck` - see one of your decks\n" +
                             prefix+"`deleteprofile` - delete your profile alongside your decks\n"+
-                            prefix+"`shprofile` +  `username` - search for profile of a registered user")
+                            prefix+"`shprofile` +  `username` - search for profile of a registered user\n" +
+                            prefix+"`seedeck` + `deckid` + `username` - search a deck on another registered user")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -257,6 +258,61 @@ client.on("message", (message) => {
                     })
                 }
             });
+
+        } else {
+            wrongChannel();
+        }
+    }
+
+    else if(msg.startsWith(prefix+"seedeck")){
+        if(message.channel.name==nomeCanal){
+            let userName = message.content.replace(prefix+"seedeck",'');
+            userName = userName.replace(/\d+/g,'').substring(1);
+
+            let deckId = message.content.replace(prefix+"seedeck",'');
+            deckId = deckId.replace(/\d/g,'');
+
+            let userId = client.users.cache.find(u => u.username == userName);
+
+            if(typeof userId ==="undefined"){
+                errorFindingUser();
+            } else {
+                users.findOne({
+                    iduser : userId
+                }, (err, data) => {
+                    if(err) console.log(err);
+                    if(!data){
+                        errorFindingUser();
+                    } else {
+                        deckData.find({
+                            iduser : userId
+                        }, (err,data) => {
+                            if(err) console.log(err);
+                            if(data.length>0){
+                                let found = false;
+                                for(let i = 0; i<data.length;i++){
+                                    if(i==deckId){
+                                        found = true;
+                                        getDeck(data[i].deck);
+                                        break;
+                                    }
+                                }
+                                if(found==false){
+                                    errorFindingDeck();
+                                }
+                            } else {
+                                message.channel.send(
+                                    embeded.setTitle("`Profile` " + userId.username)
+                                    .setDescription("This user hasn't created any decks yet")
+                                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                    .setFooter("If you neeed help use ld!help for more commands")
+                                    .setTimestamp()
+                                );
+                            }
+                        });
+                    }
+                });
+            }
 
         } else {
             wrongChannel();
