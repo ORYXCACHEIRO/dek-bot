@@ -274,6 +274,9 @@ client.on("message", (message) => {
 
             let userId = client.users.cache.find(u => u.username == userName);
 
+            console.log(deckId);
+            console.log(userName);
+
             if(typeof userId ==="undefined"){
                 errorFindingUser();
             } else {
