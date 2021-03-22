@@ -60,7 +60,8 @@ client.on("message", (message) => {
                             prefix+"`updeck` + `deckcode` - upload a deck to your profile\n"+
                             prefix+"`deletedeck` + `iddeck` - delete one of your decks\n"+
                             prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks\n"+
-                            prefix+"`profiledeck` + `iddeck` - see one of your decks")
+                            prefix+"`profiledeck` + `iddeck` - see one of your decks\n" +
+                            prefix+"`deleteprofile` - delete your profile alongside your decks")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -261,12 +262,34 @@ client.on("message", (message) => {
         }
     }
 
+    else if(msg.startsWith(prefix+"shprofile")){
+        if(message.channel.name==nomeCanal){
+            let userName = message.content.replace(prefix+"shprofile",'');
+            userName = userName.replace(/[^a-zA-Z]+/g,'');
+
+            let userId = client.users.cache.find(u => u.username ==userName).id;
+
+            console.log(userId);
+
+        } else {
+            wrongChannel();
+        }
+    }
+
     else if(msg.startsWith(prefix+"updeck")){
         if(message.channel.name==nomeCanal){
 
-            let deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",''));
+            let deck = null;
 
-            if(deck.length>1){
+            try{
+                deck = DeckEncoder.decode(message.content.replace(prefix+"updeck",'').substr(1));
+            }catch(err){
+                if(err!=""){
+                    deck = new Array;
+                }
+            }
+
+            if(deck.length>3){
 
                 let deckNamee = "";
 
@@ -375,7 +398,8 @@ client.on("message", (message) => {
     else if(msg.startsWith(prefix+"deletedeck")){
         if(message.channel.name==nomeCanal){
 
-            let deleteDeckId = message.content.replace(prefix+"deletedeck" | /\d/g,'');
+            let deleteDeckId = message.content.replace(prefix+"deletedeck",'');
+            deleteDeckId = deleteDeckId.replace(/\d/g,'');
             
             users.findOne({
                 iduser: message.author.id
