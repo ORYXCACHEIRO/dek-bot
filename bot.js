@@ -683,7 +683,7 @@ client.on("message", (message) => {
 
             printDeck.sort();
             printDeck.unshift("`MANA` | `CARTA` | `Nº DE CARTAS`");
-            printDeck.push("\n code: " + deckCode);
+            printDeck.push("\n `Code`: " + deckCode);
 
             message.channel.send(
                 embeded.setTitle("Deck")
