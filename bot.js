@@ -272,8 +272,46 @@ client.on("message", (message) => {
             if(typeof userId ==="undefined"){
                 errorFindingUser();
             } else {
-                userId = userId.id;
-                console.log(userId);
+                users.findOne({
+                    iduser : userId.id
+                }, (err, data) => {
+                    if(err) console.log(err);
+                    if(!data){
+                        errorFindingUser();
+                    } else {
+                        deckData.find({
+                            iduser: userId.id
+                        }, (err, data) => {
+                            if(err) console.log(err)
+                            if(data.length>0){
+                                var info = new Array;
+    
+                                for(let i = 0;i<data.length;i++){
+                                    var det = "["+ i +"] - " + data[i].deckName;
+                                    info.push(det);
+                                }
+                                info.unshift("`DECK ID` | `DECK NAME`")//PASSA A PRIMEIRA POSIÇÃO
+    
+                                message.channel.send(
+                                    embeded.setTitle("`Profile` " + userId.username)
+                                    .setDescription(info)
+                                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                    .setFooter("If you neeed help use ld!help for more commands")
+                                    .setTimestamp()
+                                );
+    
+                            } else {
+                                message.channel.send(
+                                    embeded.setTitle("`Profile` " + userId.username)
+                                    .setDescription("This user hasn't created any decks yet")
+                                    .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                    .setFooter("If you neeed help use ld!help for more commands")
+                                    .setTimestamp()
+                                );
+                            }
+                        });
+                    }
+                });
             }
             
 
