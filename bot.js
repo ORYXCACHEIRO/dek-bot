@@ -61,7 +61,8 @@ client.on("message", (message) => {
                             prefix+"`deletedeck` + `iddeck` - delete one of your decks\n"+
                             prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks\n"+
                             prefix+"`profiledeck` + `iddeck` - see one of your decks\n" +
-                            prefix+"`deleteprofile` - delete your profile alongside your decks")
+                            prefix+"`deleteprofile` - delete your profile alongside your decks\n"+
+                            prefix+"`shprofile` +  `username` - search for profile of a registered user")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
             .setTimestamp()
@@ -853,7 +854,7 @@ client.on("message", (message) => {
     function errorFindingUser(){
         message.channel.send(
             embeded.setTitle("Error")
-           .setDescription("This user `isn't valid` or `doesn't exist`")
+           .setDescription("This user `isn't registered` or `doesn't exist`")
            .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
            .setFooter("If you neeed help use ld!help for more commands")
            .setTimestamp()
