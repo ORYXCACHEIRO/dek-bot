@@ -264,13 +264,15 @@ client.on("message", (message) => {
 
     else if(msg.startsWith(prefix+"seedeck")){
         if(message.channel.name==nomeCanal){
-            let userName = message.content.replace(prefix+"seedeck",'').substring(1);;
-            userName = userName.replace(/\d+/g,'');
+            let userName = message.content.replace(prefix+"seedeck",'');
+            userName = userName.replace(/\s/g,'');
+            // /\s/g regex for removing spaces
 
             let deckId = message.content.replace(prefix+"seedeck",'');
             deckId = deckId.replace(/[^0-9]/g,'');
+            // /[^0-9]/g regex for getting only numbers from string
 
-            let userId = client.users.cache.find(u => u.username == userName);
+            let userId = client.users.cache.find(u => u.username.replace(/\s/g,'') == userName);
 
             console.log(deckId);
             console.log(userName);
