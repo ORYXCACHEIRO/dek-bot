@@ -267,11 +267,16 @@ client.on("message", (message) => {
             let userName = message.content.replace(prefix+"shprofile",'');
             userName = userName.replace(/\d+/g,'').substring(1);
 
-            let userId = client.users.cache.find(u => u.username == "Dani -_-");
+            let userId = client.users.cache.find(u => u.username == "Dani-_-");
 
+            if(userId=="undefined"){
+                console.log(userId + "gayyyy");
+            } else {
+                console.log(userId);
+            }
 
             console.log(userName);
-            console.log(userId);
+            
 
         } else {
             wrongChannel();
