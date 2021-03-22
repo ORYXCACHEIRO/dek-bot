@@ -183,6 +183,8 @@ client.on("message", (message) => {
 
             let deckId = message.content.replace(prefix+"profiledeck" | /\d/g,'');
 
+            console.log(deckId);
+
             users.findOne({
                 iduser : message.author.id
             }, (err, data) => {
