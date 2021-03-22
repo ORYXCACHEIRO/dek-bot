@@ -281,6 +281,7 @@ client.on("message", (message) => {
 
             if(typeof userId ==="undefined"){
                 errorFindingUser();
+                console.log("noice")
             } else {
                 users.findOne({
                     iduser : userId
