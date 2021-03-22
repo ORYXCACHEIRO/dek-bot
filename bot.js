@@ -59,7 +59,7 @@ client.on("message", (message) => {
                             prefix+"`profile` - see your profile alongside the decks you uploaded\n"+
                             prefix+"`updeck` + `deckcode` - upload a deck to your profile\n"+
                             prefix+"`deletedeck` + `iddeck` - delete one of your decks\n"+
-                            prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks"+
+                            prefix+"`deckname` + `iddeck` + `new name` - change name of one of your decks\n"+
                             prefix+"`profiledeck` + `iddeck` - see one of your decks")
             .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
             .setFooter("If you neeed help use ld!help for more commands")
@@ -173,6 +173,46 @@ client.on("message", (message) => {
                     });
                 }
             });
+        } else {
+            wrongChannel();
+        }
+    } 
+
+    else if(msg==prefix+"deleteprofile"){
+        if(message.channel.name==nomeCanal){
+            users.findOne({
+                iduser: message.author.id
+            }, (err,data) => {
+                if(err) console.log(err);
+                if(!data){
+                    notRegistered();
+                } else {
+                    deckData.deleteMany({
+                        iduser: message.author.id
+                    }, (err) => {
+                        if(err){
+                            console.log(err);
+                        } else{
+                            users.deleteOne({
+                                iduser: message.author.id
+                            }, (err) => {
+                                if(err){
+                                    console.log(err);
+                                } else {
+                                    message.channel.send(
+                                        embeded.setTitle("Profile")
+                                        .setDescription("Your profile has been `successfully deleted`")
+                                        .setThumbnail("https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Legends_of_Runeterra_icon.png/revision/latest?cb=20191020214918")
+                                        .setImage(cardImg)
+                                        .setFooter("If you neeed help use ld!help for more commands")
+                                        .setTimestamp()
+                                    );
+                                }
+                            });
+                        }
+                    });
+                }
+            })
         } else {
             wrongChannel();
         }
