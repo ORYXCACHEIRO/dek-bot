@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ORYXCACHEIRO/dekc-bot#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
+    "dotenv": "^10.0.0",
     "mongoose": "^5.12.1",
     "mysql": "^2.18.1",
     "runeterra": "^3.0.0"

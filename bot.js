@@ -2,9 +2,9 @@ const discord = require('discord.js');
 
 const { DeckEncoder } = require('runeterra');
 
-const fs = require('fs');
-
 const mongoose = require('mongoose');
+
+require('dotenv').config
 
 //BD FILES---------------------------------------
 
@@ -25,9 +25,9 @@ client.globals = require("./cardsets/core/globals.json");
 
 //---------------------------------------------------------
 
-client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
+client.login(process.env.DISCORD_CLIENT);
 
-mongoose.connect("mongodb://dani02:kDBAm1kfBCuPaWcy@lordeckbot-shard-00-00.15kqk.mongodb.net:27017,lordeckbot-shard-00-01.15kqk.mongodb.net:27017,lordeckbot-shard-00-02.15kqk.mongodb.net:27017/deckbot?ssl=true&replicaSet=atlas-7h7lwb-shard-0&authSource=admin&retryWrites=true&w=majority", {
+mongoose.connect(process.env.DB_HOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then( console.log("BD is connected"));
@@ -795,7 +795,8 @@ client.on("message", (message) => {
 
         try{
             deck = DeckEncoder.decode(deckCode);
-        }catch(err){
+        }
+        catch(err){
             if(err!=""){
                 deck = new Array;
             }
