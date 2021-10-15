@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 require('dotenv').config
 
+console.log(process.env.DISCORD_CLIENT);
 //BD FILES---------------------------------------
 
 const deckData = require("./BDtables/decks.js");
@@ -25,9 +26,9 @@ client.globals = require("./cardsets/core/globals.json");
 
 //---------------------------------------------------------
 
-client.login(process.env.DISCORD_CLIENT);
+client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
 
-mongoose.connect(process.env.DB_HOST, {
+mongoose.connect("mongodb://dani02:kDBAm1kfBCuPaWcy@lordeckbot-shard-00-00.15kqk.mongodb.net:27017,lordeckbot-shard-00-01.15kqk.mongodb.net:27017,lordeckbot-shard-00-02.15kqk.mongodb.net:27017/deckbot?ssl=true&replicaSet=atlas-7h7lwb-shard-0&authSource=admin&retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then( console.log("BD is connected"));
