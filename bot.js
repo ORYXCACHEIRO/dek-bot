@@ -1,6 +1,4 @@
-require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`,
-});
+require('dotenv').config();
 
 const discord = require('discord.js');
 
@@ -8,7 +6,7 @@ const { DeckEncoder } = require('runeterra');
 
 const mongoose = require('mongoose');
 
-console.log(process.env.DISCORD_CLIENT)
+console.log(process.env)
 //BD FILES---------------------------------------
 
 const deckData = require("./BDtables/decks.js");
