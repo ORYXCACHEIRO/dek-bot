@@ -1,14 +1,11 @@
-require('dotenv').config({
-    path: `${__dirname}/.env`
-  });
-
 const discord = require('discord.js');
 
 const { DeckEncoder } = require('runeterra');
 
+const fs = require('fs');
+
 const mongoose = require('mongoose');
 
-console.log(process.env)
 //BD FILES---------------------------------------
 
 const deckData = require("./BDtables/decks.js");
@@ -798,8 +795,7 @@ client.on("message", (message) => {
 
         try{
             deck = DeckEncoder.decode(deckCode);
-        }
-        catch(err){
+        }catch(err){
             if(err!=""){
                 deck = new Array;
             }
