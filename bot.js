@@ -25,7 +25,7 @@ client.globals = require("./cardsets/core/globals.json");
 
 //---------------------------------------------------------
 
-client.login("ODE5NjU4Mjc1MDAzMDM5NzU1.YEp0QQ.Jagcb3mbIZQDB4_bk9Tan06JyE8");
+client.login(process.env.DISCORD_CLIENT);
 
 mongoose.connect(process.env.DB_HOST, {
     useNewUrlParser: true,
