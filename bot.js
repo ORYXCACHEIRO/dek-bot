@@ -1,10 +1,10 @@
+require('dotenv').config();
+
 const discord = require('discord.js');
 
 const { DeckEncoder } = require('runeterra');
 
 const mongoose = require('mongoose');
-
-require('dotenv').config({path:'./.env'});
 
 console.log(process.env.DISCORD_CLIENT)
 //BD FILES---------------------------------------
