@@ -4,9 +4,9 @@ const { DeckEncoder } = require('runeterra');
 
 const mongoose = require('mongoose');
 
-require('dotenv').config({ path: require('find-config')('.env') })
+require('dotenv').config()
 
-console.log(process.env.DISCORD_CLIENT);
+console.log(process.env.DISCORD_CLIENT)
 //BD FILES---------------------------------------
 
 const deckData = require("./BDtables/decks.js");
