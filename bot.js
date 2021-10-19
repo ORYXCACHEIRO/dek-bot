@@ -52,12 +52,12 @@ client.on("message", (message) => {
     if(msg==prefix+"help"){
         message.channel.send(
             embeded.setTitle("Bot Help commands")
-            .setDescription( "`---------General Commands---------`\n"+
+            .setDescription( "\n---------`General Commands`---------\n"+
                             prefix+"`setupbot` - setup a channel for you to use the bot\n" + 
                             prefix+"`register` - register yourself to upload and share deck codes in the server\n"+
                             prefix+"`card` + `cardname` - search a card\n"+
                             prefix+"`deck` + `deckcode` - decode a deck and see what cards it contains\n"+
-                            "`---------Profile Commands---------`\n"+
+                            "~\n---------`Profile Commands`---------\n"+
                             prefix+"`profile` - see your profile alongside the decks you uploaded\n"+
                             prefix+"`updeck` + `deckcode` - upload a deck to your profile\n"+
                             prefix+"`deletedeck` + `iddeck` - delete one of your decks\n"+
